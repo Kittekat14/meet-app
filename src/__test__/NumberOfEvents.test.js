@@ -7,7 +7,7 @@ describe("<NumberOfEvents /> component", () => {
   beforeAll(() => {
     NumberOfEventsWrapper = shallow(<NumberOfEvents />);
   });
-   test('component has input field', () => {
+   test('component render input field', () => {
      expect(NumberOfEventsWrapper.find('.NumberOfEvents')).toHaveLength(1);
    });
    test('component state of eventCounter is at 32 by default', () => {

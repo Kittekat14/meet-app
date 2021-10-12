@@ -7,7 +7,7 @@ class NumberOfEvents extends Component {
   }
 
   handleInputChange = (event) => {
-    if (isNaN(event.target.value) || event.target.value < 1) {
+     if (isNaN(event.target.value) || event.target.value < 1) {
       this.setState({
         eventCounter: event.target.value,
         infoText: "Please write a number"
@@ -23,7 +23,7 @@ class NumberOfEvents extends Component {
   render() {
     return (
       <div>
-      <label for="NumberOfEventsInput"> Number of Events on Page:
+      <label htmlFor="NumberOfEventsInput"> Number of Events on Page:
       <input 
         id="NumberOfEventsInput"
         type="text" 

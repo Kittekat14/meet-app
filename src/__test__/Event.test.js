@@ -23,7 +23,7 @@ describe('<Event /> component', () => {
   test('details section should be collapsed by default', () => {
     expect(EventWrapper.find('.details')).toHaveLength(0);
   });
-  test('Details button\'s state should be false by default', () => { 
+  test('components show state should be false by default', () => { 
     expect(EventWrapper.state('show')).toBe(false);
   });
   test('Details should be expanded when clicked on button', () => {

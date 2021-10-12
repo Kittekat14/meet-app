@@ -1,23 +1,27 @@
 import React, { Component } from "react";
 
 class Event extends Component {
-  state = {
-    show: false 
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       show: false 
+    }
   }
 
-  detailsHandler = (event) => {
-    this.setState({ show: true })
+  detailsHandler = () => {
+    this.setState({ show: true });
   }
 
   render() {
-  const { show } = this.state;
-  const { mockData } = this.props;
 
+    const { mockData } = this.props;
+    
     return (
     <div>
       <h1>MeetUp Events</h1>
 
-      {show ?
+      {this.state.show ?
       <div className="event">
         <p className="name">{mockData.summary}</p>
         <p className="startTime">{mockData.start}</p>
@@ -36,7 +40,7 @@ class Event extends Component {
           <p className="status">{mockData.status}</p>
         </div>
       }
-      <button value={show} onClick={(event) => this.detailsHandler(event)} className="detailsButton">{show ? "Show Details" : "Hide Details"}</button>
+      <button onClick={this.detailsHandler} className="detailsButton">{this.state.show ? "Show Details" : "Hide Details"}</button>
 
     </div>
     )

@@ -16,7 +16,7 @@ class NumberOfEvents extends Component {
     } else {
       this.setState({
         eventCounter: value,
-        infoText: ""
+        infoText: ''
       });
     }
   }
@@ -24,11 +24,11 @@ class NumberOfEvents extends Component {
   render() {
     return (
       <div>
-      <label htmlFor="NumberOfEventsInput"> Number of Events on Page:
+      <label htmlFor="numberOfEventsInput"> Number of Events on Page:
       <input 
-        id="NumberOfEventsInput"
+        id="numberOfEventsInput"
         type="text" 
-        className="NumberOfEvents" 
+        className="numberOfEvents" 
         value={this.state.eventCounter}
         onChange={(value) => this.handleInputChange(value)} />
       </label>

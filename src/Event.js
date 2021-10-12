@@ -7,6 +7,7 @@ class Event extends Component {
     this.state = {
        show: false 
     }
+    this.detailsHandler = this.detailsHandler.bind(this);
   }
 
   detailsHandler = () => {
@@ -16,13 +17,13 @@ class Event extends Component {
   render() {
 
     const mockData = this.props.mockData;
-    
+
     return (
-    <div>
+    <div className="event">
       <h1>MeetUp Events</h1>
 
       {this.state.show ?
-      <div className="event">
+      <div className="summary">
         <p className="name">{mockData.summary}</p>
         <p className="startTime">{mockData.start}</p>
         <p className="timeZone">{mockData.start.timeZone}</p>

@@ -7,8 +7,13 @@ describe('<Event /> component', () => {
   beforeAll(() => {
     EventWrapper = shallow(<Event />);
   });
-
-  test("summary/name should be shown by default", () => {
+  test("component should render one event", () => {
+    expect(EventWrapper.find(".event")).toHaveLength(1);
+  });
+  test("summary section should be shown by default", () => {
+    expect(EventWrapper.find(".summary")).toHaveLength(1);
+  });
+  test("name should be shown by default", () => {
     expect(EventWrapper.find(".name")).toHaveLength(1);
   });
   test("location should be shown by default", () => {
@@ -23,24 +28,32 @@ describe('<Event /> component', () => {
   test('details section should be collapsed by default', () => {
     expect(EventWrapper.find('.details')).toHaveLength(0);
   });
-  test('components show state should be false by default', () => { 
+  test('component\'s show state should be false by default', () => { 
     expect(EventWrapper.state('show')).toBe(false);
   });
-  test('Details should be expanded when clicked on button', () => {
+
+  test("state of show should be changed when detailsButton clicked", () => {
     EventWrapper.setState({
-      show: true,
+      show: false,
+    });
+    EventWrapper.find(".detailsButton").simulate("click");
+    expect(EventWrapper.state("show")).toBe(true);
+  })
+
+  test('details should be expanded when detailsButton clicked', () => {
+    EventWrapper.setState({
+      show: false,
     });
     EventWrapper.find(".detailsButton").simulate("click");
     expect(EventWrapper.find(".details")).toHaveLength(1);
   });
-  test("Details should be hidden on click", () => {
+
+  test("details should then again be hidden when detailsButton clicked", () => {
     EventWrapper.setState({
       show: false,
     });
     EventWrapper.find(".detailsButton").simulate("click");
     expect(EventWrapper.find(".details")).toHaveLength(0);
   });
-
- 
 
 });

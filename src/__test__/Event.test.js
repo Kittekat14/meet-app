@@ -9,16 +9,16 @@ describe('<Event /> component', () => {
   });
 
   test("summary/name should be shown by default", () => {
-    expect(EventWrapper.find(".event .name")).toHaveLength(1);
+    expect(EventWrapper.find(".name")).toHaveLength(1);
   });
   test("location should be shown by default", () => {
-    expect(EventWrapper.find(".event .location")).toHaveLength(1);
+    expect(EventWrapper.find(".location")).toHaveLength(1);
   });
   test("time should be shown by default", () => {
-    expect(EventWrapper.find(".event .startTime")).toHaveLength(1);
+    expect(EventWrapper.find(".startTime")).toHaveLength(1);
   });
   test("timezone should be shown by default", () => {
-    expect(EventWrapper.find(".event .timeZone")).toHaveLength(1);
+    expect(EventWrapper.find(".timeZone")).toHaveLength(1);
   });
   test('details section should be collapsed by default', () => {
     expect(EventWrapper.find('.details')).toHaveLength(0);

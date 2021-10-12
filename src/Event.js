@@ -10,12 +10,12 @@ class Event extends Component {
   }
 
   detailsHandler = () => {
-    this.setState({ show: true });
+    this.setState((prevState) => ({ show: !prevState.show }));
   }
 
   render() {
 
-    const { mockData } = this.props;
+    const mockData = this.props.mockData;
     
     return (
     <div>
@@ -40,7 +40,7 @@ class Event extends Component {
           <p className="status">{mockData.status}</p>
         </div>
       }
-      <button onClick={this.detailsHandler} className="detailsButton">{this.state.show ? "Show Details" : "Hide Details"}</button>
+      <button onClick={() => this.detailsHandler()} className="detailsButton">{this.state.show ? "Show Details" : "Hide Details"}</button>
 
     </div>
     )

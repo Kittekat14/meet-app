@@ -35,18 +35,18 @@ describe("<NumberOfEvents /> component", () => {
     });
     const eventObject = { target: { value: '' }};
     NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.state('infoText')).toBe('');
+    expect(NumberOfEventsWrapper.state('infoText')).toBe(eventObject);
    });
 
    test('component state of eventCounter should change to number that\'s set', () => {
     NumberOfEventsWrapper.setState({
-      eventCounter: 32,
-      infoText: 'Please write a number'
+      eventCounter: 32
     });
-    NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', 1);
-    expect(NumberOfEventsWrapper.state('eventCounter')).toBe(1);
+    let setNumber = { target: { value: 2 }}
+    NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', setNumber);
+    expect(NumberOfEventsWrapper.state('eventCounter')).toBe(setNumber);
    });
-   
+
 })
 
      

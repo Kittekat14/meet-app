@@ -73,7 +73,10 @@ module.exports.getAccessToken = async (event) => {
       console.error(err);
       return {
         statusCode: 500,
-        body: JSON.stringify(err),
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        },
+        body: JSON.stringify(err)
       };
     });
 };
@@ -126,7 +129,10 @@ module.exports.getAccessToken = async (event) => {
     console.error(err);
     return {
       statusCode: 500,
-      body: JSON.stringify(err),
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      },
+      body: JSON.stringify(err)
     };
   });
 

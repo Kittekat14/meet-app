@@ -16,7 +16,7 @@ class NumberOfEvents extends Component {
      if (isNaN(newCounter) || newCounter < 1) {
       this.setState({
         eventCounter: newCounter,
-        infoText: 'Please write a valid number',
+        infoText: 'Please write a number',
       })
     } else {
       this.setState({

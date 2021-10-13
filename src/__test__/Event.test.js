@@ -19,43 +19,35 @@ describe('<Event /> component', () => {
   test("location should be shown by default", () => {
     expect(EventWrapper.find(".location")).toHaveLength(1);
   });
-  test("time should be shown by default", () => {
+  test("starting time should be shown by default", () => {
     expect(EventWrapper.find(".startTime")).toHaveLength(1);
   });
-  test("timezone should be shown by default", () => {
+  test("ending time should be shown by default", () => {
     expect(EventWrapper.find(".timeZone")).toHaveLength(1);
   });
   test('details section should be collapsed by default', () => {
     expect(EventWrapper.find('.details')).toHaveLength(0);
   });
-  test('component\'s show state should be false by default', () => { 
-    expect(EventWrapper.state('show')).toBe(false);
+  test('component\'s show state should be true by default', () => { 
+    expect(EventWrapper.state('show')).toBe(true);
   });
-  test('component should have 2 hide/show buttons', () => { 
-    expect(EventWrapper.find('.detailsButton')).toHaveLength(2);
+  test('component should have a hide/show button1', () => { 
+    expect(EventWrapper.find('.detailsButton')).toHaveLength(1);
   });
 
-  test("state of show should be changed when detailsButton-show is clicked", () => {
-    EventWrapper.setState({
-      show: false,
-    });
-    EventWrapper.find(".detailsButton").at[0].simulate("click");
-    expect(EventWrapper.state("show")).toBe(true);
-  })
-
-  test('details should be expanded when detailsButton-hide is clicked', () => {
+  test("state of show should be changed when detailsButton is clicked", () => {
     EventWrapper.setState({
       show: true,
     });
-    EventWrapper.find(".detailsButton").at[1].simulate("click");
+    EventWrapper.find(".detailsButton").simulate("click");
     expect(EventWrapper.state("show")).toBe(false);
-  });
+  })
 
   test("details should then again be hidden when detailsButton clicked", () => {
     EventWrapper.setState({
       show: false,
     });
-    EventWrapper.find(".detailsButton").at[1].simulate("click");
+    EventWrapper.find(".detailsButton").simulate("click");
     expect(EventWrapper.find(".details")).toHaveLength(0);
   });
 

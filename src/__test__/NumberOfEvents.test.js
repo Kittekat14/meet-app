@@ -24,6 +24,7 @@ describe("<NumberOfEvents /> component", () => {
      expect(NumberOfEventsWrapper.find('.infoText').text('.infoText')).toBe(infoText);
    });
 
+
    test('component state of infoText should be empty when number is written', () => {
     NumberOfEventsWrapper.setState({
       infoText: 'Please write a number'

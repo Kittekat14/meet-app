@@ -31,28 +31,31 @@ describe('<Event /> component', () => {
   test('component\'s show state should be false by default', () => { 
     expect(EventWrapper.state('show')).toBe(false);
   });
+  test('component should have 2 hide/show buttons', () => { 
+    expect(EventWrapper.find('.detailsButton')).toHaveLength(2);
+  });
 
-  test("state of show should be changed when detailsButton clicked", () => {
+  test("state of show should be changed when detailsButton-show is clicked", () => {
     EventWrapper.setState({
       show: false,
     });
-    EventWrapper.find(".detailsButton").simulate("click");
+    EventWrapper.find(".detailsButton").at[0].simulate("click");
     expect(EventWrapper.state("show")).toBe(true);
   })
 
-  test('details should be expanded when detailsButton clicked', () => {
+  test('details should be expanded when detailsButton-hide is clicked', () => {
     EventWrapper.setState({
-      show: false,
+      show: true,
     });
-    EventWrapper.find(".detailsButton").simulate("click");
-    expect(EventWrapper.find(".details")).toHaveLength(1);
+    EventWrapper.find(".detailsButton").at[1].simulate("click");
+    expect(EventWrapper.state("show")).toBe(false);
   });
 
   test("details should then again be hidden when detailsButton clicked", () => {
     EventWrapper.setState({
       show: false,
     });
-    EventWrapper.find(".detailsButton").simulate("click");
+    EventWrapper.find(".detailsButton").at[1].simulate("click");
     expect(EventWrapper.find(".details")).toHaveLength(0);
   });
 

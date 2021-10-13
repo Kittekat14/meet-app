@@ -1,38 +1,47 @@
 import React, { Component } from 'react';
 
 class NumberOfEvents extends Component {
-  state = {
-   eventCounter: 32,
-   infoText: ''
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      eventCounter: 32,
+      infoText: ''
+    }
   }
 
+
   handleInputChange = (event) => {
-    const value = event.target.value;
-     if (isNaN(value) || value < 1) {
+    const newCounter = event.target.value;
+     if (isNaN(newCounter) || newCounter < 1) {
       this.setState({
-        eventCounter: 32,
-        infoText: "Please write a number",
-      });
+        eventCounter: newCounter,
+        infoText: 'Please write a valid number',
+      })
     } else {
       this.setState({
-        eventCounter: value,
+        eventCounter: newCounter,
         infoText: ''
       });
     }
   }
 
+
   render() {
+
+    const { eventCounter, infoText } = this.state;
+
     return (
       <div>
       <label htmlFor="numberOfEventsInput"> Number of Events on Page:
       <input 
         id="numberOfEventsInput"
         type="text" 
-        className="numberOfEvents" 
-        value={this.state.eventCounter}
+        className="numberInput" 
+        value={eventCounter}
         onChange={(value) => this.handleInputChange(value)} />
       </label>
-      <p className="infoText">{this.state.infoText}</p>
+      <p className="infoText">{infoText}</p>
       </div>
     )
   }

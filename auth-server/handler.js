@@ -16,7 +16,7 @@ const credentials = {
   javascript_origins: ["https://kittekat14.github.io"],
 };
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
-const oAuth2Client = new google.auth.OAuth2(
+const oAuth2Client = new OAuth2(
   client_id,
   client_secret,
   redirect_uris[0]
@@ -41,7 +41,7 @@ module.exports.getAuthURL = async () => {
 
 module.exports.getAccessToken = async (event) => {
 // The values used to instantiate the OAuthClient are at the top of the file
-  const oAuth2Client = new google.auth.OAuth2(
+  const oAuth2Client = new OAuth2(
     client_id,
     client_secret,
     redirect_uris[0]
@@ -86,7 +86,7 @@ module.exports.getAccessToken = async (event) => {
 
  module.exports.getCalendarEvents = async (event) => {
 
-  const oAuth2Client = new google.auth.OAuth2(
+  const oAuth2Client = new OAuth2(
     client_id,
     client_secret,
     redirect_uris[0]
@@ -129,6 +129,9 @@ module.exports.getAccessToken = async (event) => {
     console.error(err);
     return {
       statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      },
       body: JSON.stringify(err)
     };
   });

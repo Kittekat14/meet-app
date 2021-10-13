@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import mockData from "./mockData";
 
 class Event extends Component {
   constructor(props) {
@@ -18,29 +17,31 @@ class Event extends Component {
   }
 
   render() {
+    
+    const { event } = this.props;
 
     return (
     <div className="event">
       <h1>MeetUp Events</h1>
-
+d
       {this.state.show &&
       <div className="summary">
-        <p className="name">{mockData.summary}</p>
-        <p className="startTime">{mockData.start.dateTime}</p>
-        <p className="timeZone">{mockData.end.dateTime}</p>
-        <p className="location">{mockData.location}</p>
+        <p className="name">{event.summary}</p>
+        <p className="startTime">{event.start.dateTime}</p>
+        <p className="timeZone">{event.end.dateTime}</p>
+        <p className="location">{event.location}</p>
       </div>
       }
       {!this.state.show &&
       <div className="details">
-          <p className="name">{mockData.summary}</p>
-          <p className="startTime">{mockData.start.dateTime}</p>
-          <p className="endTime">{mockData.end.dateTime}</p>
-          <p className="timeZone">{mockData.start.timeZone}</p>
-          <p className="location">{mockData.location}</p>
-          <p className="decription">{mockData.description}</p>
-          <p className="organizerEmail">{mockData.organizer.email}</p>
-          <p className="status">{mockData.status}</p>
+          <p className="name">{event.summary}</p>
+          <p className="startTime">{event.start.dateTime}</p>
+          <p className="endTime">{event.end.dateTime}</p>
+          <p className="timeZone">{event.start.timeZone}</p>
+          <p className="location">{event.location}</p>
+          <p className="decription">{event.description}</p>
+          <p className="organizerEmail">{event.organizer.email}</p>
+          <p className="status">{event.status}</p>
         </div>
       }
       <button type="button" onClick={(e) => this.detailsHandler(e)} className="detailsButton">{this.state.show && "Show Details"}</button>

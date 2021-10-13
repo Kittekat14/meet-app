@@ -28,7 +28,7 @@ d
       <div className="summary">
         <p className="name">{event.summary}</p>
         <p className="startTime">{event.start.dateTime}</p>
-        <p className="timeZone">{event.end.dateTime}</p>
+        <p className="endTime">{event.end.dateTime}</p>
         <p className="location">{event.location}</p>
       </div>
       }

@@ -5,9 +5,9 @@ class Event extends Component {
     super(props)
   
     this.state = {
-       show: false
+       show: true
     }
-    this.detailsHandler = this.detailsHandler.bind(this);
+    
   }
 
   detailsHandler = (e) => {
@@ -22,12 +22,12 @@ class Event extends Component {
 
     return (
     <div className="event">
-      <h1>MeetUp Events</h1>
-
+      <h3>{event.summary}</h3>
       {this.state.show &&
       <div className="summary">
         <p className="name">{event.summary}</p>
         <p className="startTime">{event.start.dateTime}</p>
+        <p className="endTime">{event.end.dateTime}</p>
         <p className="location">{event.location}</p>
       </div>
       }
@@ -35,9 +35,12 @@ class Event extends Component {
       <div className="details">
           <p className="name">{event.summary}</p>
           <p className="startTime">{event.start.dateTime}</p>
+          <p className="endTime">{event.end.dateTime}</p>
           <p className="timeZone">{event.start.timeZone}</p>
           <p className="location">{event.location}</p>
           <p className="decription">{event.description}</p>
+          <p className="organizerEmail">{event.organizer.email}</p>
+          <p className="status">{event.status}</p>
         </div>
       }
       <button type="button" onClick={(e) => this.detailsHandler(e)} className="detailsButton">{this.state.show && "Show Details"}</button>

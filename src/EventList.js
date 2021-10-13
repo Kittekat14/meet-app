@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Event from './Event';
-import mockData from './mockData';
 
 class EventList extends Component {
   render() {

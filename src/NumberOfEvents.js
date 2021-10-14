@@ -36,10 +36,10 @@ class NumberOfEvents extends Component {
       <label htmlFor="numberOfEventsInput"> Number of Events on Page:
       <input 
         id="numberOfEventsInput"
-        type="text" 
+        type="number" 
         className="numberInput" 
         value={eventCounter}
-        onChange={(value) => this.handleInputChange(value)} />
+        onChange={this.handleInputChange} />
       </label>
       <p className="infoText">{infoText}</p>
       </div>

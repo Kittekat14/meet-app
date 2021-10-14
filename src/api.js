@@ -1,4 +1,4 @@
-import { mockData } from './mockData';
+import mockData from './mockData';
 
 export const extractLocations = (events) => {
   var extractLocations = events.map((event) => event.location);

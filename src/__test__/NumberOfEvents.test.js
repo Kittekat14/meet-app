@@ -7,45 +7,46 @@ describe("<NumberOfEvents /> component", () => {
   beforeAll(() => {
     NumberOfEventsWrapper = shallow(<NumberOfEvents />);
   });
-   test('component renders input field', () => {
-     expect(NumberOfEventsWrapper.find('.NumberOfEvents')).toHaveLength(1);
+
+   test('component render input field', () => {
+     expect(NumberOfEventsWrapper.find('.numberInput')).toHaveLength(1);
    });
+   test('component render infoText paragraph', () => {
+     expect(NumberOfEventsWrapper.find('.infoText')).toHaveLength(1);
+   });
+
    test('component state of eventCounter is 32 by default', () => {
      const eventCounter = NumberOfEventsWrapper.state('eventCounter');
-     expect(NumberOfEventsWrapper.find('.NumberOfEvents').prop('value')).toBe(eventCounter);
+     expect(NumberOfEventsWrapper.find('.numberInput').prop('value')).toBe(eventCounter);
    });
-
-   test('component state of eventCounter should change to input number', () => {
-     NumberOfEventsWrapper.setState({
-      eventCounter: 32
-    });
-    const eventObject = { target: { value: 24 }};
-    NumberOfEventsWrapper.find('.NumberOfEvents').simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.state('eventCounter')).toBe(24);
-   });
-
    test('component state of infoText is empty string by default', () => {
      const infoText = NumberOfEventsWrapper.state('infoText');
      expect(NumberOfEventsWrapper.find('.infoText').text('.infoText')).toBe(infoText);
    });
 
+
    test('component state of infoText should be empty when number is written', () => {
     NumberOfEventsWrapper.setState({
       infoText: 'Please write a number'
     });
-    const eventObject = { target: { value: '' }};
-    NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.state('infoText')).toBe(eventObject);
+    const eventObject = { target: { value: 'Please write a number' }};
+    NumberOfEventsWrapper.find('.numberInput').simulate('change', eventObject);
+    expect(NumberOfEventsWrapper.state('infoText')).toBe('Please write a number');
+   });
+
+   test('component state of eventCounter should change to input number', () => {
+    const inputNumber = { target: { value: 24 }};
+    NumberOfEventsWrapper.find('.numberInput').simulate('change', inputNumber);
+    expect(NumberOfEventsWrapper.state('eventCounter')).toBe(24);
    });
 
    test('component state of eventCounter should change to number that\'s set', () => {
-    NumberOfEventsWrapper.setState({
-      eventCounter: 32
-    });
     let setNumber = { target: { value: 2 }}
-    NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', setNumber);
-    expect(NumberOfEventsWrapper.state('eventCounter')).toBe(setNumber);
+    NumberOfEventsWrapper.find('.numberInput').simulate('change', setNumber);
+    expect(NumberOfEventsWrapper.state('eventCounter')).toBe(2);
    });
+
+
 
 })
 

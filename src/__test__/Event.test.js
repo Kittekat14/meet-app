@@ -1,11 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Event from "../Event";
+import mockData from '../mockData';
 
 describe('<Event /> component', () => {
   let EventWrapper;
+  let event = mockData[0];
   beforeAll(() => {
-    EventWrapper = shallow(<Event />);
+    EventWrapper = shallow(<Event event={event} />);
   });
   test("component should render one event", () => {
     expect(EventWrapper.find(".event")).toHaveLength(1);
@@ -23,7 +25,7 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find(".startTime")).toHaveLength(1);
   });
   test("ending time should be shown by default", () => {
-    expect(EventWrapper.find(".timeZone")).toHaveLength(1);
+    expect(EventWrapper.find(".endTime")).toHaveLength(1);
   });
   test('details section should be collapsed by default', () => {
     expect(EventWrapper.find('.details')).toHaveLength(0);
@@ -31,15 +33,18 @@ describe('<Event /> component', () => {
   test('component\'s show state should be true by default', () => { 
     expect(EventWrapper.state('show')).toBe(true);
   });
-  test('component should have a hide/show button1', () => { 
-    expect(EventWrapper.find('.detailsButton')).toHaveLength(1);
+  test('component should have a button for showing details', () => { 
+    expect(EventWrapper.find('.showDetailsButton')).toHaveLength(1);
+  });
+  test('component should have a button for hiding details', () => { 
+    expect(EventWrapper.find('.hideDetailsButton')).toHaveLength(1);
   });
 
   test("state of show should be changed when detailsButton is clicked", () => {
     EventWrapper.setState({
       show: true,
     });
-    EventWrapper.find(".detailsButton").simulate("click");
+    EventWrapper.find(".showDetailsButton").simulate("click");
     expect(EventWrapper.state("show")).toBe(false);
   })
 
@@ -47,7 +52,7 @@ describe('<Event /> component', () => {
     EventWrapper.setState({
       show: false,
     });
-    EventWrapper.find(".detailsButton").simulate("click");
+    EventWrapper.find(".hideDetailsButton").simulate("click");
     expect(EventWrapper.find(".details")).toHaveLength(0);
   });
 

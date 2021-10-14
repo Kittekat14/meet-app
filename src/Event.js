@@ -43,8 +43,8 @@ class Event extends Component {
           <p className="status">{event.status}</p>
         </div>
       }
-      <button type="button" onClick={(e) => this.detailsHandler(e)} className="detailsButton">{this.state.show && "Show Details"}</button>
-      <button type="button" onClick={(e) => this.detailsHandler(e)} className="detailsButton">{!this.state.show && "Hide Details"}</button>
+      <button type="button" onClick={(e) => this.detailsHandler(e)} className="showDetailsButton">{this.state.show && "Show Details"}</button>
+      <button type="button" onClick={(e) => this.detailsHandler(e)} className="hideDetailsButton">{!this.state.show && "Hide Details"}</button>
 
     </div>
     )

@@ -4,7 +4,6 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import mockData from './mockData';
 import { extractLocations, getEvents } from "./api";
 
 class App extends Component {
@@ -12,7 +11,7 @@ class App extends Component {
     super(props)
   
     this.state = {
-      events: mockData,
+      events: [],
       locations: [],
     }
   }
@@ -47,7 +46,7 @@ class App extends Component {
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <EventList events={this.state.events}/>
-        <NumberOfEvents />
+        <NumberOfEvents updateEventList={this.updateEventList} />
       </div>
     );
   }

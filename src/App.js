@@ -12,7 +12,7 @@ class App extends Component {
   
     this.state = {
       events: mockData,
-      locations: []
+      locations: [],
     }
   }
 

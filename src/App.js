@@ -13,10 +13,11 @@ class App extends Component {
     this.state = {
       events: [],
       locations: [],
+      numberOfEvents: 32
     }
   }
 
-  updateEvents = (location) => {
+  updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
@@ -46,7 +47,7 @@ class App extends Component {
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <EventList events={this.state.events}/>
-        <NumberOfEvents updateEventList={this.updateEventList} />
+        <NumberOfEvents updateEvents={this.updateEvents} />
       </div>
     );
   }

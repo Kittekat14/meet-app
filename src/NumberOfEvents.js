@@ -24,8 +24,8 @@ class NumberOfEvents extends Component {
         infoText: ''
       });
     };
-    this.props.updateEventList(newCounter);
-    
+    this.props.updateEvents(newCounter);
+
   }
 
 

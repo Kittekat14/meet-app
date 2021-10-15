@@ -11,7 +11,7 @@ class NumberOfEvents extends Component {
   }
 
 
-  handleInputChange = (event) => {
+  handleInputChanged = (event) => {
     const newCounter = event.target.value;
      if (isNaN(newCounter) || newCounter < 1) {
       this.setState({
@@ -24,7 +24,7 @@ class NumberOfEvents extends Component {
         infoText: ''
       });
     };
-    this.props.updateEvents(newCounter);
+    this.props.updateEventNumber(event.target.value);
 
   }
 
@@ -41,7 +41,7 @@ class NumberOfEvents extends Component {
         type="number" 
         className="numberInput" 
         value={eventCounter}
-        onChange={this.handleInputChange} />
+        onChange={this.handleInputChanged} />
       </label>
       <p className="infoText">{infoText}</p>
       </div>

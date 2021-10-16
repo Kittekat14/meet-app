@@ -8,13 +8,12 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
     .then((res) => res.json())
     .catch((error) => error.json());
-
   return result;
 };
 
@@ -35,7 +34,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-    `https://vpdug6jj84.execute-api.eu-central-1.amazonaws.com/dev/api/token + / + ${encodeCode}`
+    `https://vpdug6jj84.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}`
   )
     .then((res) => {
       return res.json();
@@ -50,16 +49,17 @@ const getToken = async (code) => {
 
 export const getEvents = async () => {
   NProgress.start();
+
   if (window.location.href.startsWith('http://localhost')) {
     NProgress.done();
     return mockData;
   };
-  // here comes if(!navigator.onLine...) and token for "lastEvents"...
+  
   const token = await getAccessToken();
 
   if (token) {
     removeQuery();
-    const url = `https://vpdug6jj84.execute-api.eu-central-1.amazonaws.com/dev/api/get-events + / + ${token}`;
+    const url = `https://vpdug6jj84.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
     const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);

@@ -18,11 +18,12 @@ defineFeature(feature, test => {
   test('An event element is collapsed by default', ({ given, when, then }) => {
 
     given('the user hasn’t expanded an event to see its details', () => {
-      EventListWrapper = mount(<EventList events={mockData} />);
-      EventWrapper = mount(<Event event={mockData[0]} />);
+      
     });
     when('the user opens the app', () => {
       AppWrapper = mount(<App />);
+      EventListWrapper = mount(<EventList events={mockData} />);
+      EventWrapper = shallow(<Event event={mockData[0]} />);
     });
     then('the user should see a list of all the events without details', () => {
       expect(EventWrapper.find(".details")).toHaveLength(0);
@@ -37,7 +38,7 @@ defineFeature(feature, test => {
       given('a user has found an event which he wants to read more about', () => {
         AppWrapper = mount(<App />);
         EventListWrapper = mount(<EventList events={mockData} />);
-        EventWrapper = mount(<Event event={mockData[0]} />);
+        EventWrapper = shallow(<Event event={mockData[0]} />);
       });
       when('the user clicks on the show details button of said element', () => {
         EventWrapper.find('.showDetailsButton').simulate('click');
@@ -51,16 +52,14 @@ defineFeature(feature, test => {
   test('User can collapse an event to hide its details', ({ given, when, then }) => {
 
       given('the user has read details about an event he wanted to know more about', () => {
-        AppWrapper = mount(<App />);
-        EventListWrapper = mount(<EventList events={mockData} />);
-        EventWrapper = mount(<Event event={mockData[0]} />);
-        EventWrapper.find('.details');
+       
+        expect(EventWrapper.find('.details')).toHaveLength(1);
       });
       when('the user clicks on the hide details button of said element', () => {
         EventWrapper.find('.hideDetailsButton').simulate('click');
       });
       then('the event details collapse', () => {
-        expect(EventWrapper.find(".details")).toHaveLength(0);
+        expect(EventWrapper.find('.details')).toHaveLength(0);
       });
 
     });

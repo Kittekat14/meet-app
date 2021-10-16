@@ -5,7 +5,7 @@ import NumberOfEvents from '../NumberOfEvents';
 describe("<NumberOfEvents /> component unit test", () => {
   let NumberOfEventsWrapper;
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}}/>);
   });
 
    test('component render input field', () => {
@@ -15,7 +15,7 @@ describe("<NumberOfEvents /> component unit test", () => {
      expect(NumberOfEventsWrapper.find('.infoText')).toHaveLength(1);
    });
 
-   test('component state of eventCounter is 32 by default', () => {
+   test('component shows 32 events by default', () => {
      const eventCounter = NumberOfEventsWrapper.state('eventCounter');
      expect(NumberOfEventsWrapper.find('.numberInput').prop('value')).toBe(eventCounter);
    });

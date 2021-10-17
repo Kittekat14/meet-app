@@ -11,7 +11,6 @@ class CitySearch extends Component {
     }
   }
   
-
   handleInputChanged = (event) => {
   const value = event.target.value;
   const suggestions = this.props.locations.filter((location) => {

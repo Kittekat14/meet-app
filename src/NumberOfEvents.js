@@ -5,7 +5,6 @@ class NumberOfEvents extends Component {
     super(props)
   
     this.state = {
-      eventCounter: 32,
       infoText: ''
     }
   }

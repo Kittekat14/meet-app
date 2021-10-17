@@ -122,6 +122,7 @@ module.exports.getAccessToken = async (event) => {
       headers: { 
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
+        Authorization: `Bearer ${access_token}`
       },
       body: JSON.stringify({ events: results.data.items }),
     };

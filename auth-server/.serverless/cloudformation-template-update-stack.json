@@ -173,7 +173,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/auth-server/dev/1634489910094-2021-10-17T16:58:30.094Z/auth-server.zip"
+          "S3Key": "serverless/auth-server/dev/1634490130528-2021-10-17T17:02:10.528Z/auth-server.zip"
         },
         "Handler": "handler.getAuthURL",
         "Runtime": "nodejs12.x",
@@ -206,7 +206,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/auth-server/dev/1634489910094-2021-10-17T16:58:30.094Z/auth-server.zip"
+          "S3Key": "serverless/auth-server/dev/1634490130528-2021-10-17T17:02:10.528Z/auth-server.zip"
         },
         "Handler": "handler.getAccessToken",
         "Runtime": "nodejs12.x",
@@ -239,7 +239,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/auth-server/dev/1634489910094-2021-10-17T16:58:30.094Z/auth-server.zip"
+          "S3Key": "serverless/auth-server/dev/1634490130528-2021-10-17T17:02:10.528Z/auth-server.zip"
         },
         "Handler": "handler.getCalendarEvents",
         "Runtime": "nodejs12.x",
@@ -520,7 +520,7 @@
         "GetCalendarEventsLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1634489900529": {
+    "ApiGatewayDeployment1634490118579": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {

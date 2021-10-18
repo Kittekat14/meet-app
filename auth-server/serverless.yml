@@ -1,7 +1,5 @@
 service: auth-server
 
-frameworkVersion: "2"
-
 provider:
   name: aws
   runtime: nodejs12.x
@@ -20,7 +18,6 @@ functions:
       - http:
           path: api/get-auth-url
           method: get
-          cors: true
           
   getAccessToken:
     handler: handler.getAccessToken
@@ -28,7 +25,6 @@ functions:
       - http:
           path: api/token/{code}
           method: get
-          cors: true
           
   getCalendarEvents:
     handler: handler.getCalendarEvents
@@ -36,16 +32,15 @@ functions:
       - http:
           path: api/get-events/{access-token}
           method: get
-          cors: true
-
-resources:
-  Resources:
-    GatewayResponseDefault4XX:
-      Type: AWS::ApiGateway::GatewayResponse
-      Properties:
-        ResponseParameters:
-          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
-        ResponseType: DEFAULT_4XX
-        RestApiId:
-          Ref: "ApiGatewayRestApi"
+          
+# resources:
+#   Resources:
+#     GatewayResponseDefault4XX:
+#       Type: AWS::ApiGateway::GatewayResponse
+#       Properties:
+#         ResponseParameters:
+#           gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+#           gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+#         ResponseType: DEFAULT_4XX
+#         RestApiId:
+#           Ref: "ApiGatewayRestApi"

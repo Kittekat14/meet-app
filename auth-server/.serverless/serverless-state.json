@@ -193,7 +193,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/auth-server/dev/1634556919366-2021-10-18T11:35:19.366Z/auth-server.zip"
+                "S3Key": "serverless/auth-server/dev/1634557366642-2021-10-18T11:42:46.642Z/auth-server.zip"
               },
               "Handler": "handler.getAuthURL",
               "Runtime": "nodejs12.x",
@@ -226,7 +226,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/auth-server/dev/1634556919366-2021-10-18T11:35:19.366Z/auth-server.zip"
+                "S3Key": "serverless/auth-server/dev/1634557366642-2021-10-18T11:42:46.642Z/auth-server.zip"
               },
               "Handler": "handler.getAccessToken",
               "Runtime": "nodejs12.x",
@@ -259,7 +259,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/auth-server/dev/1634556919366-2021-10-18T11:35:19.366Z/auth-server.zip"
+                "S3Key": "serverless/auth-server/dev/1634557366642-2021-10-18T11:42:46.642Z/auth-server.zip"
               },
               "Handler": "handler.getCalendarEvents",
               "Runtime": "nodejs12.x",
@@ -397,141 +397,6 @@
                 "Ref": "ApiGatewayResourceApiGetDashevents"
               },
               "PathPart": "{access-token}",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodApiGetDashauthDashurlOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": ""
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceApiGetDashauthDashurl"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodApiTokenCodeVarOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": ""
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceApiTokenCodeVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodApiGetDasheventsAccessDashtokenVarOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": ""
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceApiGetDasheventsAccessDashtokenVar"
-              },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -675,7 +540,7 @@
               "GetCalendarEventsLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1634556913600": {
+          "ApiGatewayDeployment1634557361335": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -684,9 +549,6 @@
               "StageName": "dev"
             },
             "DependsOn": [
-              "ApiGatewayMethodApiGetDashauthDashurlOptions",
-              "ApiGatewayMethodApiTokenCodeVarOptions",
-              "ApiGatewayMethodApiGetDasheventsAccessDashtokenVarOptions",
               "ApiGatewayMethodApiGetDashauthDashurlGet",
               "ApiGatewayMethodApiTokenCodeVarGet",
               "ApiGatewayMethodApiGetDasheventsAccessDashtokenVarGet"
@@ -800,19 +662,6 @@
                     "/*/*"
                   ]
                 ]
-              }
-            }
-          },
-          "GatewayResponseDefault4XX": {
-            "Type": "AWS::ApiGateway::GatewayResponse",
-            "Properties": {
-              "ResponseParameters": {
-                "gatewayresponse.header.Access-Control-Allow-Origin": "'*'",
-                "gatewayresponse.header.Access-Control-Allow-Headers": "'*'"
-              },
-              "ResponseType": "DEFAULT_4XX",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
               }
             }
           }
@@ -974,22 +823,6 @@
             "http": {
               "path": "api/get-auth-url",
               "method": "get",
-              "cors": {
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
               "integration": "AWS_PROXY"
             }
           }
@@ -1009,22 +842,6 @@
             "http": {
               "path": "api/token/{code}",
               "method": "get",
-              "cors": {
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
               "integration": "AWS_PROXY"
             }
           }
@@ -1044,22 +861,6 @@
             "http": {
               "path": "api/get-events/{access-token}",
               "method": "get",
-              "cors": {
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
               "integration": "AWS_PROXY"
             }
           }
@@ -1073,39 +874,17 @@
         "versionLogicalId": "GetCalendarEventsLambdaVersionxEr2g2q35bFqYHsNnZmnAuiFGdw9CCPUhlcyxgUh7s"
       }
     },
-    "resources": {
-      "Resources": {
-        "GatewayResponseDefault4XX": {
-          "Type": "AWS::ApiGateway::GatewayResponse",
-          "Properties": {
-            "ResponseParameters": {
-              "gatewayresponse.header.Access-Control-Allow-Origin": "'*'",
-              "gatewayresponse.header.Access-Control-Allow-Headers": "'*'"
-            },
-            "ResponseType": "DEFAULT_4XX",
-            "RestApiId": {
-              "Ref": "ApiGatewayRestApi"
-            }
-          }
-        }
-      },
-      "Outputs": {}
-    },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
       "service": {
         "$ref": "$[\"service\"][\"serviceObject\"]"
       },
-      "frameworkVersion": "2",
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
-      },
-      "resources": {
-        "$ref": "$[\"service\"][\"resources\"]"
       }
     },
     "layers": {},
@@ -1113,7 +892,7 @@
     "artifact": "C:\\Users\\ASUS\\Documents\\careerfoundry\\meet-app\\auth-server\\.serverless\\auth-server.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/auth-server/dev/1634556919366-2021-10-18T11:35:19.366Z",
+    "artifactDirectoryName": "serverless/auth-server/dev/1634557366642-2021-10-18T11:42:46.642Z",
     "artifact": "auth-server.zip"
   }
 }

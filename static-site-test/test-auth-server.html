@@ -96,12 +96,13 @@
       const events = document.getElementById("events");
       const getCalendarEvents = "https://vpdug6jj84.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
-      getEvents.onclick = function () {
+      
         getEvents.onclick = function () {
+
         const { access_token } = JSON.parse(accessTokenElement.innerText);
-        console.log(access_token);
+        
         const eventRequest = getCalendarEvents + "/" + access_token;
-        console.log(eventRequest);
+        
         fetch(eventRequest)
           .then(function (response) {
             return response.json();
@@ -110,7 +111,8 @@
             events.innerText = JSON.stringify(json, null, 2);
           });
         };
-      }
+    
+    
       // -- END OF STEP 3
     </script>
   </body>

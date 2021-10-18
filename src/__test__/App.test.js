@@ -48,52 +48,45 @@ describe('<App /> Integration', () => {
   const AppWrapper = mount(<App />); // fully rendered to DOM with node's childrens
   const AppEventNumberState = AppWrapper.state('numberOfEvents');
   expect(AppEventNumberState).not.toEqual(undefined);
-  expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(AppEventNumberState);
+  expect(AppWrapper.find(NumberOfEvents).props().eventCounter).toEqual(AppEventNumberState);
   AppWrapper.unmount(); // then removed from DOM again
   });
 
-  test('get list of events matching the city selected by the user', async () => {
-  const AppWrapper = mount(<App />);
-  const CitySearchWrapper = AppWrapper.find(CitySearch);
-  const locations = extractLocations(mockData);
-  CitySearchWrapper.setState({ suggestions: locations });
-  const suggestions = CitySearchWrapper.state('suggestions');
-  const selectedIndex = Math.floor(Math.random() * (suggestions.length));
-  const selectedCity = suggestions[selectedIndex];
-  await CitySearchWrapper.instance().handleItemClicked(selectedCity);
-  const allEvents = await getEvents();
-  const eventsToShow = allEvents.filter(event => event.location === selectedCity);
-  expect(AppWrapper.state('events')).toEqual(eventsToShow);
-  AppWrapper.unmount();
-  });
-
-  test('get list of all events when user clicks "See all cities"', async () => {
-  const AppWrapper = mount(<App />);
-  const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
-  await suggestionItems.at(suggestionItems.length - 1).simulate('click');
-  const allEvents = await getEvents();
-  expect(AppWrapper.state('events')).toEqual(allEvents);
-  AppWrapper.unmount();
-  });
-
   
-  test('user can get a specific number of events when input changes', async () => {
-    const AppWrapper = mount(<App />);
-    AppWrapper.instance().updateEvents = jest.fn();
-    AppWrapper.instance().forceUpdate();
-    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    NumberOfEventsWrapper.instance().handleInputChanged({
-      target: { value: 1 },
-    });
-    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
-    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(null, 1);
+  test("get list of events matching the city selected by the user", async () => {
+    let AppWrapper = mount(<App />);
+    const CitySearchWrapper = AppWrapper.find(CitySearch);
+    const locations = extractLocations(mockData);
+    CitySearchWrapper.setState({ suggestions: locations });
+    const suggestions = CitySearchWrapper.state("suggestions");
+    const selectedIndex = Math.floor(Math.random() * suggestions.length);
+    const selectedCity = suggestions[selectedIndex];
+    await CitySearchWrapper.instance().handleItemClicked(selectedCity);
+    const allEvents = await getEvents();
+    const eventsToShow = allEvents.filter(
+      (event) => event.location === selectedCity
+    );
+    expect(AppWrapper.state("events")).toEqual(eventsToShow);
     AppWrapper.unmount();
   });
 
-})
+  test('get list of all events when user clicks "See all cities"', async () => {
+    let AppWrapper = mount(<App />);
+    const suggestionItems = AppWrapper.find(CitySearch).find(".suggestions li");
+    await suggestionItems.at(suggestionItems.length - 1).simulate("click");
+    const allEvents = await getEvents();
+    expect(AppWrapper.state("events")).toEqual(allEvents);
+    AppWrapper.unmount();
+  });
 
- // AppWrapper.setState({ numberOfEvents: 32 });
-    // const eventObject = { target: { value: 10 } };
-    // AppWrapper.find(".numberInput").simulate("change", eventObject);
-    // const countedEvents = await getEvents();
-    // expect(AppWrapper.state('numberOfEvents')).toBe(countedEvents);
+  test("user can get a specific number of events when .numberInput changes", () => {
+    let AppWrapper = mount(<App />);
+    AppWrapper.setState({ numberOfEvents: 32 });
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 20 } };
+    NumberOfEventsWrapper.find(".numberInput").simulate("change", eventObject);
+    expect(AppWrapper.state("numberOfEvents")).toBe(20);
+    AppWrapper.unmount();
+  });  
+
+})

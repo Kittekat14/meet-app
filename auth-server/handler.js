@@ -88,8 +88,7 @@ module.exports.getAccessToken = async (event) => {
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
-    redirect_uris[0],
-    calendar_id
+    redirect_uris[0]
   );
 
   const access_token = decodeURIComponent(

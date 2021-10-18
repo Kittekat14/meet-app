@@ -96,7 +96,7 @@ module.exports.getAccessToken = async (event) => {
 
   oAuth2Client.setCredentials({ access_token });
 
-  return new Promise((resolve, reject) => {
+  return new Promise(access_token, (resolve, reject) => {
     calendar.events.list(
       {
         calendarId: calendar_id,

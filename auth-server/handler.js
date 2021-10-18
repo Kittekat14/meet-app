@@ -12,7 +12,7 @@ const credentials = {
   auth_uri: "https://accounts.google.com/o/oauth2/auth",
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  redirect_uris: ["https://kittekat14.github.io/meet-app/", "https://kittekat14.github.io/meet-app"],
+  redirect_uris: ["https://kittekat14.github.io/meet-app/"],
   javascript_origins: ["http://localhost:3000", "http://localhost:8080", "https://kittekat14.github.io"],
 };
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;

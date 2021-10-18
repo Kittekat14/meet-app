@@ -5,7 +5,6 @@ provider:
   runtime: nodejs12.x
   region: eu-central-1
   timeout: 60 # optional, in seconds, default is 6
-  lambdaHashingVersion: 20201221
   environment:
     CLIENT_ID: ${file(config.json):CLIENT_ID}
     CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
@@ -18,29 +17,15 @@ functions:
       - http:
           path: api/get-auth-url
           method: get
-          
   getAccessToken:
     handler: handler.getAccessToken
     events:
       - http:
           path: api/token/{code}
-          method: get
-          
+          method: get       
   getCalendarEvents:
     handler: handler.getCalendarEvents
     events:
       - http:
           path: api/get-events/{access-token}
           method: get
-          
-# resources:
-#   Resources:
-#     GatewayResponseDefault4XX:
-#       Type: AWS::ApiGateway::GatewayResponse
-#       Properties:
-#         ResponseParameters:
-#           gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-#           gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
-#         ResponseType: DEFAULT_4XX
-#         RestApiId:
-#           Ref: "ApiGatewayRestApi"

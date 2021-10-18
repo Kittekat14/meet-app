@@ -1,6 +1,6 @@
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
-const calendar = google.calendar("v3");
+// const calendar = google.calendar("v3");
 
 const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
@@ -94,17 +94,10 @@ module.exports.getAccessToken = async (event) => {
    
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
 
-  //oAuth2Client.setCredentials({ access_token });
+  oAuth2Client.setCredentials({ access_token });
+  const calendar = google.calendar({version: 'v3', oAuth2Client});
 
   return new Promise((resolve, reject) => {
-
-    oAuth2Client.setCredentials(access_token, (err, token) => {
-      if (err) {
-        return reject(err);
-      }
-      return resolve(token);
-    });
-    
     calendar.events.list(
       {
         calendarId: calendar_id,

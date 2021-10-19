@@ -97,14 +97,18 @@ input[type="number"] {
   position: absolute;
   right: 5px;
   bottom: 5px;
-  padding: 5px 8px;
+  padding: 8px 12px;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
   background-color: #8f59ed;
   color: wheat;
+  font-size: 14px;
 }
-
+.button:hover {
+  background-color: #6415d2;
+  box-shadow: 2px 2px 8px slategray;
+}
 .name {
   font-size: 16px;
   font-weight: 600;

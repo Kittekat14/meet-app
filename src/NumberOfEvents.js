@@ -44,7 +44,7 @@ class NumberOfEvents extends Component {
         onChange={(event) => {this.props.updateEventNumber(event)} } />
       </label>
 
-      <p className="infoText">{infoText}</p>
+      <p className="infoText .Alert">{infoText}</p>
 
       </div>
     )

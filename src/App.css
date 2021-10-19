@@ -1,5 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
 .App {
+  background-color: whitesmoke;
+  background-image: url(../images/pexels-wendy-wei-1190298.jpg);
   text-align: center;
   padding: 2% 5%;
 }
@@ -85,7 +88,17 @@ input[type="number"] {
   position: relative;
 }
 
-.details-btn {
+.showDetailsButton {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.hideDetailsButton {
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -114,7 +127,7 @@ input[type="number"] {
   overflow-x: hidden;
 }
 
-.numberOfEvents {
+.numberInput {
   width: 200px;
   margin: 20px auto;
   text-align: center;

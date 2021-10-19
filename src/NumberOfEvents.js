@@ -31,7 +31,7 @@ class NumberOfEvents extends Component {
     const { infoText } = this.state;
 
     return (
-      <div>
+      <div className="EventNumberComponent">
 
       <label htmlFor="numberOfEventsInput"> Number of Events on Page:
 

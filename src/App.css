@@ -3,6 +3,9 @@
 .App {
   background-color: whitesmoke;
   background-image: url(./images/pexels-wendy-wei-1190298.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   text-align: center;
   padding: 2% 5%;
 }
@@ -39,10 +42,6 @@ input[type="number"] {
   height: 38px;
 }
 
-.city {
-  width: 250px;
-}
-
 .CitySearch {
   display: flex;
   flex-direction: column;
@@ -50,6 +49,11 @@ input[type="number"] {
   max-width: 300px;
   margin: auto;
   position: relative;
+  border-radius: 4px;
+}
+
+.city {
+  width: 250px;
 }
 
 .suggestions {
@@ -80,6 +84,7 @@ input[type="number"] {
 }
 
 .event {
+  background-color: whitesmoke;
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
@@ -88,7 +93,7 @@ input[type="number"] {
   position: relative;
 }
 
-.showDetailsButton {
+.button {
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -96,28 +101,31 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-}
-
-.hideDetailsButton {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
-  padding: 5px 8px;
-  border-radius: 4px;
-  outline: none;
-  cursor: pointer;
+  background-color: #8f59ed;
+  color: wheat;
 }
 
 .name {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }
 
-.group-name {
+.startTime, .endTime {
   text-transform: uppercase;
   font-size: 14px;
 }
-
+.startTime span.timeLabel, .endTime span.timeLabel {
+  font-weight: 700;
+  text-transform: none;
+  margin: 0 4px 0 0;
+  text-decoration: underline;
+  text-decoration-color: #6d056d;
+  text-decoration-style: double;
+}
+.location {
+  font-size: 14px;
+  font-weight: 700;
+}
 .going,
 .visibility {
   font-style: italic;
@@ -127,9 +135,15 @@ input[type="number"] {
   overflow-x: hidden;
 }
 
+.EventNumberComponent {
+  display: block;
+  border-radius: 4px;
+  background-color: thistle;
+}
+
 .numberInput {
   width: 200px;
-  margin: 20px auto;
+  margin: 20px 20px;
   text-align: center;
 }
 

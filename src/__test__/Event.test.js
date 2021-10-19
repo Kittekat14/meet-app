@@ -33,12 +33,6 @@ describe('<Event /> component', () => {
   test('component\'s show state should be true by default', () => { 
     expect(EventWrapper.state('show')).toBe(true);
   });
-  test('component should have a button for showing details', () => { 
-    expect(EventWrapper.find('.showDetailsButton')).toHaveLength(1);
-  });
-  test('component should have a button for hiding details', () => { 
-    expect(EventWrapper.find('.hideDetailsButton')).toHaveLength(1);
-  });
 
   test("state of show should be changed when detailsButton is clicked", () => {
     EventWrapper.setState({

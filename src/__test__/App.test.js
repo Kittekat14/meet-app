@@ -53,7 +53,7 @@ describe('<App /> Integration', () => {
   });
 
   
-  test("get list of events matching the city selected by the user", async () => {
+  test("User get list of events matching the city they selected", async () => {
     let AppWrapper = mount(<App />);
     const CitySearchWrapper = AppWrapper.find(CitySearch);
     const locations = extractLocations(mockData);
@@ -63,14 +63,12 @@ describe('<App /> Integration', () => {
     const selectedCity = suggestions[selectedIndex];
     await CitySearchWrapper.instance().handleItemClicked(selectedCity);
     const allEvents = await getEvents();
-    const eventsToShow = allEvents.filter(
-      (event) => event.location === selectedCity
-    );
+    const eventsToShow = allEvents.filter((event) => event.location === selectedCity);
     expect(AppWrapper.state("events")).toEqual(eventsToShow);
     AppWrapper.unmount();
   });
 
-  test('get list of all events when user clicks "See all cities"', async () => {
+  test('User get list of all events when they click "See all cities"', async () => {
     let AppWrapper = mount(<App />);
     const suggestionItems = AppWrapper.find(CitySearch).find(".suggestions li");
     await suggestionItems.at(suggestionItems.length - 1).simulate("click");
@@ -79,7 +77,7 @@ describe('<App /> Integration', () => {
     AppWrapper.unmount();
   });
 
-  test("user can get a specific number of events when .numberInput changes", () => {
+  test("User can get a specific number of events when they change .numberInput input field", () => {
     let AppWrapper = mount(<App />);
     AppWrapper.setState({ numberOfEvents: 32 });
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);

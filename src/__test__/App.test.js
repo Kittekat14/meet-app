@@ -85,6 +85,6 @@ describe('<App /> Integration', () => {
     NumberOfEventsWrapper.find(".numberInput").simulate("change", eventObject);
     expect(AppWrapper.state("numberOfEvents")).toBe(20);
     AppWrapper.unmount();
-  });  
+  });
 
 })

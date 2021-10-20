@@ -87,4 +87,16 @@ describe('<App /> Integration', () => {
     AppWrapper.unmount();
   });
 
+
+  test("is mockData passed through prop 'events' of EventList?", async () => {
+    let AppWrapper = mount(<App />);
+    const allEvents = await getEvents();
+    AppWrapper.setState({
+      events: allEvents,
+    });
+    const EventListWrapper = AppWrapper.find(EventList);
+    expect(EventListWrapper.prop("events").length).toEqual(mockData.length);
+    AppWrapper.unmount();
+  });
+
 })

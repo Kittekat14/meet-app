@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
-import Event from '../Event';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
 import mockData from '../mockData';
@@ -95,8 +94,21 @@ afterEach(() => {
     expect(EventListWrapper.prop("events").length).toEqual(mockData.length);
   });
 
-  test("App displays 32 events by default", () => {
-    expect(AppWrapper.state('numberOfEvents')).toBe(32);
-  });
+  test("EventList renders exactly as much events as set in state", () => {
+    AppWrapper.setState({
+      numberOfEvents: 32,
+    });
+    const EventListWrapper = AppWrapper.find(EventList);
+    EventListWrapper.update();
+    const eventList = EventListWrapper.prop("events");
+    expect(eventList.length).toEqual(32);
+  })
 
+  test("App displays 32 events by default", () => {
+    AppWrapper.setState({
+      numberOfEvents: 32,
+    });
+    expect(AppWrapper.state('numberOfEvents')).toEqual(32);
+  });
+  
 })

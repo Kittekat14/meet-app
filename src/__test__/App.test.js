@@ -101,7 +101,7 @@ afterEach(() => {
     const EventListWrapper = AppWrapper.find(EventList);
     EventListWrapper.update();
     const eventList = EventListWrapper.prop("events");
-    expect(eventList.length).toEqual(32);
+    expect(eventList.length).toEqual(AppWrapper.state('events').length);
   })
 
   test("App displays 32 events by default", () => {

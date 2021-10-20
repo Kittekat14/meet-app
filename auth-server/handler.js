@@ -15,12 +15,15 @@ const credentials = {
   redirect_uris: ["https://kittekat14.github.io/meet-app/"],
   javascript_origins: ["https://kittekat14.github.io", "http://127.0.0.1:8080", "http://192.168.178.23:8080", "http://localhost:3000", "http://localhost:8080"],
 };
+
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
-const oAuth2Client = new OAuth2(
+const oAuth2Client = new google.auth.OAuth2(
   client_id,
   client_secret,
   redirect_uris[0]
 );
+
+/* Get AuthUrl */
 
 module.exports.getAuthURL = async () => {
   const authUrl = oAuth2Client.generateAuthUrl({
@@ -31,7 +34,7 @@ module.exports.getAuthURL = async () => {
   return {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*"
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify({
       authUrl: authUrl,
@@ -39,18 +42,17 @@ module.exports.getAuthURL = async () => {
   };
 };
 
+/* Get Access Token */
+
 module.exports.getAccessToken = async (event) => {
-// The values used to instantiate the OAuthClient are at the top of the file
-  const oAuth2Client = new OAuth2(
+  const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
     redirect_uris[0]
   );
-  // Decode authorization code extracted from the URL query
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
   return new Promise((resolve, reject) => {
-
     oAuth2Client.getToken(code, (err, token) => {
       if (err) {
         return reject(err);
@@ -58,43 +60,36 @@ module.exports.getAccessToken = async (event) => {
       return resolve(token);
     });
   })
-    .then((token) => {
-      // Respond with OAuth token 
-      return {
-        statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true,
-        },
-        body: JSON.stringify(token),
-      };
-    })
-    .catch((err) => {
-      // Handle error
-      console.error(err);
-      return {
-        statusCode: 500,
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        },
-        body: JSON.stringify(err)
-      };
-    });
+  .then((token) => {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(token),
+    };
+  })
+  .catch((err) => {
+    console.error(err);
+    return {
+      statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(err),
+    };
+  });
 };
 
+/* Get Calendar Events */
 
-// building it in comparison to getAccessToken
-
- module.exports.getCalendarEvents = async (event) => {
-
-  const oAuth2Client = new OAuth2(
+module.exports.getCalendarEvents = async (event) => {
+  const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
     redirect_uris[0]
   );
-   
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
-
   oAuth2Client.setCredentials({ access_token });
 
   return new Promise((resolve, reject) => {
@@ -106,8 +101,7 @@ module.exports.getAccessToken = async (event) => {
         singleEvents: true,
         orderBy: "startTime",
       },
-      (error, response) => 
-      {
+      (error, response) => {
         if (error) {
           reject(error);
         } else {
@@ -119,23 +113,20 @@ module.exports.getAccessToken = async (event) => {
   .then((results) => {
     return {
       statusCode: 200,
-      headers: { 
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({ events: results.data.items }),
     };
   })
   .catch((err) => {
-    // Handle error
     console.error(err);
     return {
       statusCode: 500,
       headers: {
-        "Access-Control-Allow-Origin": "*"
+        'Access-Control-Allow-Origin': '*'
       },
-      body: JSON.stringify(err)
+      body: JSON.stringify(err),
     };
   });
-
- }
+};

@@ -5,45 +5,47 @@ class NumberOfEvents extends Component {
     super(props)
   
     this.state = {
-      eventCounter: 32,
       infoText: ''
     }
   }
 
-
-  handleInputChange = (event) => {
-    const newCounter = event.target.value;
-     if (isNaN(newCounter) || newCounter < 1) {
-      this.setState({
-        eventCounter: '',
-        infoText: 'Please write a number',
-      })
-    } else {
-      this.setState({
-        eventCounter: newCounter,
-        infoText: ''
-      });
-    };
-    this.props.updateEvents(newCounter);
-
-  }
+  // handleInputChanged = (event) => {
+  //   const newCounter = event.target.value;
+  //    if (isNaN(newCounter) || newCounter < 1) {
+  //     this.setState({
+  //       eventCounter: '',
+  //       infoText: 'Please write a number',
+  //     })
+  //   } else {
+  //     this.setState({
+  //       eventCounter: newCounter,
+  //       infoText: ''
+  //     });
+  //   };
+  //   this.props.updateEventNumber(event.target.value);
+  //}
 
 
   render() {
 
-    const { eventCounter, infoText } = this.state;
+    const { infoText } = this.state;
 
     return (
-      <div>
+      <div className="EventNumberComponent">
+
       <label htmlFor="numberOfEventsInput"> Number of Events on Page:
+
+
       <input 
         id="numberOfEventsInput"
         type="number" 
         className="numberInput" 
-        value={eventCounter}
-        onChange={this.handleInputChange} />
+        value={this.props.eventCounter}
+        onChange={(event) => {this.props.updateEventNumber(event)} } />
       </label>
-      <p className="infoText">{infoText}</p>
+
+      <p className="infoText .Alert">{infoText}</p>
+
       </div>
     )
   }

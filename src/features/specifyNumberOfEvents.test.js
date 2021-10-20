@@ -9,19 +9,16 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 defineFeature(feature, test => {
 
 test('When user hasn’t specified a number, 32 is the default number', ({ given, when, then }) => {
-  let AppWrapper;
-  let NumberOfEventsWrapper;
+  
         given('a user hasn’t specified a number of events to show up', () => {
-          AppWrapper = mount(<App />);
-          NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}} />);
+          
         });
-
+        let AppWrapper;
         when('the user does nothing', () => {
-          // nothing happens
-        });
+          AppWrapper = mount(<App />);
 
         then('the default number of shown events is 32', () => {
-          expect(NumberOfEventsWrapper.state("eventCounter")).toBe(32);
+          expect(AppWrapper.state("numberOfEvents")).toBe(32);
         });
     });
 

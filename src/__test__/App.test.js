@@ -96,7 +96,7 @@ afterEach(() => {
 
   test("EventList renders exactly as much events as set in state", () => {
     AppWrapper.setState({
-      numberOfEvents: 32,
+      numberOfEvents: 24,
     });
     const EventListWrapper = AppWrapper.find(EventList);
     EventListWrapper.update();
@@ -106,9 +106,9 @@ afterEach(() => {
 
   test("App displays 32 events by default", () => {
     AppWrapper.setState({
-      numberOfEvents: 32,
+      numberOfEvents: 24,
     });
-    expect(AppWrapper.state('numberOfEvents')).toEqual(32);
+    expect(AppWrapper.state('numberOfEvents')).toEqual(24);
   });
   
 })

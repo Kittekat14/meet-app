@@ -34,35 +34,34 @@ defineFeature(feature, test => {
 
 
   test('User can expand an event to see its details', ({ given, when, then }) => {
-
-      given('a user has found an event which he wants to read more about', () => {
-        AppWrapper = mount(<App />);
-        EventListWrapper = mount(<EventList events={mockData} />);
-        EventWrapper = shallow(<Event event={mockData[0]} />);
-      });
-      when('the user clicks on the show details button of said element', () => {
-        EventWrapper.find('.showDetailsButton').simulate('click');
-      });
-      then('the event\'s details expand', () => {
-        expect(EventWrapper.find(".details")).toHaveLength(1);
-      });
-
-    });        
+    
+    given('a user has found an event which he wants to read more about', () => {
+      AppWrapper = mount(<App />);
+      EventListWrapper = mount(<EventList events={mockData} />);
+      EventWrapper = shallow(<Event event={mockData[0]} />);
+    });
+    when('the user clicks on the show details button of said element', () => {
+      EventWrapper.find('.showDetailsButton').simulate('click');
+    });
+    then('the event\'s details expand', () => {
+      expect(EventWrapper.find(".details")).toHaveLength(1);
+    });
+      
+  });        
      
   test('User can collapse an event to hide its details', ({ given, when, then }) => {
 
-      given('the user has read details about an event he wanted to know more about', () => {
-       
-        expect(EventWrapper.find('.details')).toHaveLength(1);
-      });
-      when('the user clicks on the hide details button of said element', () => {
-        EventWrapper.find('.hideDetailsButton').simulate('click');
-      });
-      then('the event details collapse', () => {
-        expect(EventWrapper.find('.details')).toHaveLength(0);
-      });
-
+    given('the user has read details about an event he wanted to know more about', () => {
+      expect(EventWrapper.find('.details')).toHaveLength(1);
     });
+    when('the user clicks on the hide details button of said element', () => {
+      EventWrapper.find('.hideDetailsButton').simulate('click');
+    });
+    then('the event details collapse', () => {
+      expect(EventWrapper.find('.details')).toHaveLength(0);
+    });
+
+  });
   
 
 });

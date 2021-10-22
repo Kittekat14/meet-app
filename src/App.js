@@ -5,7 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from "./api";
-import logo from './images/MEET.png';
+import logo from './images/MEET2.png';
 
 class App extends Component {
   constructor(props) {

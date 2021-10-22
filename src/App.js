@@ -5,6 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from "./api";
+import logo from './images/MEET.png';
 
 class App extends Component {
   constructor(props) {
@@ -64,8 +65,7 @@ class App extends Component {
     
     return (
       <div className="App">
-
-        <img src="src/images/MEET.png" alt="meet-logo" width="250"/>
+        <img src={logo} alt="Logo" width="250"/>
 
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <EventList events={this.state.events}/>

@@ -52,14 +52,6 @@ input[type="number"] {
   border-radius: 4px;
 }
 
-/* .infoAlert {
-  position: absolute;
-  margin: 0;
-  left: 10px;
-  top: 100px;
-  background-color: #cdcdcd;
-} */
-
 .city {
   width: 250px;
 }

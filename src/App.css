@@ -52,6 +52,14 @@ input[type="number"] {
   border-radius: 4px;
 }
 
+/* .infoAlert {
+  position: absolute;
+  margin: 0;
+  left: 10px;
+  top: 100px;
+  background-color: #cdcdcd;
+} */
+
 .city {
   width: 250px;
 }
@@ -102,7 +110,7 @@ input[type="number"] {
   outline: none;
   cursor: pointer;
   background-color: #8f59ed;
-  color: wheat;
+  color: whitesmoke;
   font-size: 14px;
 }
 .button:hover {
@@ -159,10 +167,10 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-.Alert {
+/* .Alert {
   position: fixed;
   top: 20px;
-}
+} */
 
 .data-vis-wrapper {
   display: flex;

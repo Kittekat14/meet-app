@@ -28,6 +28,8 @@ handleInputChanged = (event) => {
         errorText: '',
       });
     }
+    //  this.props.updateEventNumber(value);
+    // onChange={(e) => this.props.updateEventNumber(e)} inside input field
 }
 
   render() {
@@ -42,7 +44,9 @@ handleInputChanged = (event) => {
         value={this.state.numberOfEvents}
         onChange={(event) => {this.handleInputChanged(event)} } />
       </label>
-       <ErrorAlert className="errorAlert" text={this.state.errorText}/>
+
+      <ErrorAlert className="errorAlert" text={this.state.errorText} />  {/* You could also do this.props.errorText  */}
+      
       </div>
     )
   }

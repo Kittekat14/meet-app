@@ -6,37 +6,43 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from "./api";
 import logo from './images/MEET2.png';
+import WelcomeScreen from './WelcomeScreen';
+import {checkToken, getAccessToken} from './api';
 
 class App extends Component {
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
       events: [],
       locations: [],
       numberOfEvents: 32,
-      currentLocation: 'all',
+      currentLocation: "all",
+      showWelcomeScreen: undefined,
+    };
+  }
+
+  async componentDidMount() {
+    this.mounted = true;
+    const accessToken = localStorage.getItem("access_token");
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
     }
   }
 
-  componentDidMount() {
-    this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-          events: events.slice(0, this.state.numberOfEvents),
-          locations: extractLocations(events),
-        });
-      }
-    });
-  }
-
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.mounted = false;
   }
 
-
-   updateEvents = (location, numberOfEvents) => {
+  updateEvents = (location, numberOfEvents) => {
     getEvents().then((events) => {
       const locationEvents =
         location === "all"
@@ -47,27 +53,39 @@ class App extends Component {
       if (this.mounted) {
         this.setState({
           events: eventsToShow,
-          currentLocation: location
+          currentLocation: location,
         });
       }
     });
   };
 
-
   updateEventNumber = (changedNumber) => {
     this.setState({ numberOfEvents: changedNumber });
     this.updateEvents(this.state.currentLocation, changedNumber);
-  }
+  };
 
   render() {
-    
+    if (this.state.showWelcomeScreen === undefined)
+      return <div className="App" />;
+
     return (
       <div className="App">
-        <img src={logo} alt="Logo" width="250"/>
+        <img src={logo} alt="Logo" width="250" />
 
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <EventList events={this.state.events}/>
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventNumber={(value) => this.updateEventNumber(value)} />
+        <CitySearch
+          locations={this.state.locations}
+          updateEvents={this.updateEvents}
+        />
+        <EventList events={this.state.events} />
+        <NumberOfEvents
+          numberOfEvents={this.state.numberOfEvents}
+          updateEventNumber={(value) => this.updateEventNumber(value)}
+        />
+
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => getAccessToken()}
+        />
       </div>
     );
   }

@@ -49,7 +49,7 @@ const getToken = async (code) => {
 
 
 // checks the validity of accessToken
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )

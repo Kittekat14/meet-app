@@ -53,7 +53,7 @@ afterEach(() => {
   test('App passes "numberOfEvents" state as a prop to NumberOfEvents', () => {
   const AppEventNumberState = AppWrapper.state('numberOfEvents');
   expect(AppEventNumberState).not.toEqual(undefined);
-  expect(AppWrapper.find(NumberOfEvents).props().eventCounter).toEqual(AppEventNumberState);
+  expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(AppEventNumberState);
   });
 
   

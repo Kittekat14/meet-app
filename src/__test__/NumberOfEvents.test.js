@@ -5,24 +5,24 @@ import NumberOfEvents from '../NumberOfEvents';
 describe("<NumberOfEvents /> component unit test", () => {
   let NumberOfEventsWrapper;
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}}/>);
+    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEventNumber={() => {}}/>);
   });
 
    test('component render input field', () => {
      expect(NumberOfEventsWrapper.find('.numberInput')).toHaveLength(1);
    });
-   test('component render infoText paragraph', () => {
-     expect(NumberOfEventsWrapper.find('.infoText')).toHaveLength(1);
+   test("component render ErrorAlert Component", () => {
+     expect(NumberOfEventsWrapper.find(".errorAlert")).toHaveLength(1);
    });
 
-   test('state (given from parent as prop) of eventCounter is 32 by default', () => {
-     const eventCounter = NumberOfEventsWrapper.prop('eventCounter');
-     expect(NumberOfEventsWrapper.find('.numberInput').prop('value')).toBe(eventCounter);
+   test('state (given from parent as prop) of numberOfEvents is 32 by default', () => {
+     const numberOfEvents = NumberOfEventsWrapper.prop('numberOfEvents');
+     expect(NumberOfEventsWrapper.find('.numberInput').prop('value')).toBe(numberOfEvents);
    });
 
-   test('component state of infoText is empty string by default', () => {
-     const infoText = NumberOfEventsWrapper.state('infoText');
-     expect(NumberOfEventsWrapper.find('.infoText').text('.infoText')).toBe(infoText);
+   test('component state of errorText is empty string by default', () => {
+     const errorText = NumberOfEventsWrapper.state("errorText");
+     expect(NumberOfEventsWrapper.find(".errorAlert").prop("text")).toEqual(errorText);
    });
 
    

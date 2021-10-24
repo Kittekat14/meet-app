@@ -5,31 +5,30 @@ class NumberOfEvents extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfEvents: '',
+      numberOfEvents: 32,
       errorText: ''
     }
   }
 
 handleInputChanged = (event) => {
-  let value = event.target.value;
+  const value = event.target.value;
+  this.props.updateEventNumber(value);
   if (isNaN(value) || value < 0 || value === 0) {
-      return this.setState({
-        numberOfEvents: '',
-        errorText: 'Please write a number bigger than 0',
-      })
-    } else if (value > 32) {
-      return this.setState({
-        numberOfEvents: '',        
-        errorText: 'Please select a number from 1 to 32',
-      });
-    } else {
-      return this.setState({
-        numberOfEvents: value,        
-        errorText: '',
-      });
-    }
-    //  this.props.updateEventNumber(value);
-    // onChange={(e) => this.props.updateEventNumber(e)} inside input field
+    return this.setState({
+      numberOfEvents: '',
+      errorText: 'Please write a number bigger than 0',
+    })
+  } else if (value > 32) {
+    return this.setState({
+      numberOfEvents: '',
+      errorText: 'Please select a number from 1 to 32',
+    })
+  } else {
+    return this.setState({
+      numberOfEvents: value,
+      errorText: '',
+    });
+  }; 
 }
 
   render() {
@@ -42,10 +41,10 @@ handleInputChanged = (event) => {
         type="number" 
         className="numberInput" 
         value={this.state.numberOfEvents}
-        onChange={(event) => {this.handleInputChanged(event)} } />
+        onChange={(event) => this.handleInputChanged(event)} />
       </label>
 
-      <ErrorAlert className="errorAlert" text={this.state.errorText} />  {/* You could also do this.props.errorText  */}
+      <ErrorAlert className="errorAlert" text={this.state.errorText} />
       
       </div>
     )

@@ -16,7 +16,7 @@ describe("<NumberOfEvents /> component unit test", () => {
    });
 
    test('state (given from parent as prop) of numberOfEvents is 32 by default', () => {
-     const numberOfEvents = NumberOfEventsWrapper.prop('numberOfEvents');
+     const numberOfEvents = NumberOfEventsWrapper.state('numberOfEvents');
      expect(NumberOfEventsWrapper.find('.numberInput').prop('value')).toBe(numberOfEvents);
    });
 

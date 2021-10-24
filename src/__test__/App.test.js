@@ -30,10 +30,7 @@ describe('<App /> Integration', () => {
 let AppWrapper;
 beforeEach(async () => {
   AppWrapper = await mount(<App />);
-  await AppWrapper.instance().componentDidMount();
-  AppWrapper.update();
 });
-
 afterEach(() => {
   AppWrapper.unmount();
 });

@@ -4,13 +4,12 @@ import "./WelcomeScreen.css";
 function WelcomeScreen(props) {
 
   return props.showWelcomeScreen ? (
-
     <div className="WelcomeScreen">
       <h1>Welcome to the Meet app</h1>
       <h4>
         Log in to see upcoming events around the world for full-stack developers
       </h4>
-      <div className="button_cont" align="center">
+      <div className="button_cont">
         <div class="google-btn">
           <div class="google-icon-wrapper">
             <img
@@ -31,14 +30,13 @@ function WelcomeScreen(props) {
         </div>
       </div>
       <a
-        href="https://YOUR_GITHUB_USERNAME.github.io/meet/privacy.html"
+        href="https://kittekat14.github.io/meet-app/Meet-Privacy-Policy.html"
         rel="nofollow noopener"
       >
         Privacy policy
       </a>
     </div>
-  ) 
-  : null;
+  ) : null;
 }
 
 export default WelcomeScreen;

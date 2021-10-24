@@ -25,13 +25,12 @@ class CitySearch extends Component {
         infoText: 'We can not find the city you are looking for. Please try another city'
       });
     } else {
-      return this.setState({
-        query: value,
-        suggestions,
-        
-      showSuggestions:false,
-        infoText:''
-      });
+        return this.setState({
+          query: value,
+          suggestions,
+          showSuggestions: false,
+          infoText:''
+        });
     }
   };
 
@@ -64,7 +63,7 @@ class CitySearch extends Component {
             onClick={() => this.handleItemClicked(suggestion)}
             >{suggestion}</li>
             ))}
-          <li onClick={() => this.handleItemClicked('all')} key="all">
+          <li key="all" onClick={() => this.handleItemClicked('all')}>
             <b>See all cities</b>
           </li>
         </ul>

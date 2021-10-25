@@ -1,13 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 
 .App {
-  background-color: whitesmoke;
   background-image: url(./images/pexels-wendy-wei-1190298.jpg);
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
   text-align: center;
-  padding: 2% 5%;
 }
 
 .App * {

@@ -42,7 +42,7 @@ function WelcomeScreen(props) {
         </Row>
         <Row>
           <a
-            href="https://kittekat14.github.io/meet-app/privacy.html"
+            href="https://kittekat14.github.io/meet-app/public/privacy.html"
             rel="nofollow noopener"
           >
             Privacy policy

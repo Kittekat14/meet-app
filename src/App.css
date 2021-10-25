@@ -161,18 +161,6 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-/* .Alert {
-  position: fixed;
-  top: 20px;
-}
-
-.infoAlert {
-  display: block;
-}
-.errorAlert {
-  display: block;
-} */
-
 .data-vis-wrapper {
   display: flex;
   align-items: center;

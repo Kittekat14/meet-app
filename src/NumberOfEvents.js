@@ -44,7 +44,7 @@ handleInputChanged = (event) => {
         onChange={(event) => this.handleInputChanged(event)} />
       </label>
 
-      <ErrorAlert className="errorAlert" text={this.state.errorText} />
+      <ErrorAlert text={this.state.errorText} />
       
       </div>
     )

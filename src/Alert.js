@@ -41,7 +41,8 @@ export class InfoAlert extends Alert {
     this.fontSize = '18px';
     this.fontWeight = '500';
     this.maxWidth = '600px';
-    this.margin = '0 auto'
+    this.margin = '0 auto';
+
   }
 }
 
@@ -52,5 +53,6 @@ export class ErrorAlert extends Alert {
     this.backgroundColor = '#fff';
     this.fontSize = '16px';
     this.fontWeight = '700';
+    this.margin = "0 auto";
   }
 }

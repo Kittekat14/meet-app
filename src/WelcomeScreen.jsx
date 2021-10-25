@@ -1,41 +1,53 @@
 import React from "react";
 import "./WelcomeScreen.css";
-import { Container } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 
 function WelcomeScreen(props) {
 
   return props.showWelcomeScreen ? (
     <div className="WelcomeScreen">
-      <Container fluid>
-        <h1>Welcome to the Meet app</h1>
-        <h4>
-          Log in to see upcoming events around the world for full-stack
-          developers
-        </h4>
-        <div className="button_cont" align="center">
-          <div class="google-btn">
-            <div class="google-icon-wrapper">
-              <img
-                class="google-icon"
-                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                alt="Google sign-in"
-              />
+      <Container>
+        <Row>
+          <Col>
+          <h1>Welcome to the Meet app</h1>
+          <h4>
+            Log in to see upcoming events around the world for full-stack
+            developers
+          </h4>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+          <div className="button_cont" align="center">
+            <div class="google-btn">
+              <div class="google-icon-wrapper">
+                <img
+                  class="google-icon"
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                  alt="Google sign-in"
+                />
+              </div>
+              <button
+                onClick={() => {
+                  props.getAccessToken();
+                }}
+                rel="nofollow noopener"
+                class="btn-text"
+              >
+                Sign in with google
+              </button>
             </div>
-            <button
-              onClick={() => {
-                props.getAccessToken();
-              }}
-              rel="nofollow noopener"
-              class="btn-text"
-            >
-              Sign in with google
-            </button>
           </div>
-        </div>
-        <a
-          href="https://kittekat14.github.io/meet-app/privacy.html"
-          rel="nofollow noopener"
-        >Privacy policy</a>
+          </Col>
+        </Row>
+        <Row>
+          <a
+            href="https://kittekat14.github.io/meet-app/privacy.html"
+            rel="nofollow noopener"
+          >
+            Privacy policy
+          </a>
+        </Row>
       </Container>
     </div>
   ) : null;

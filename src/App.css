@@ -1,11 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 
 .App {
+  background-color: whitesmoke;
   background-image: url(./images/pexels-wendy-wei-1190298.jpg);
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
   text-align: center;
+  padding: 2% 5%;
 }
 
 .App * {
@@ -100,7 +102,7 @@ input[type="number"] {
   outline: none;
   cursor: pointer;
   background-color: #8f59ed;
-  color: whitesmoke;
+  color: wheat;
   font-size: 14px;
 }
 .button:hover {
@@ -157,10 +159,10 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-/* .Alert {
+.Alert {
   position: fixed;
   top: 20px;
-} */
+}
 
 .data-vis-wrapper {
   display: flex;

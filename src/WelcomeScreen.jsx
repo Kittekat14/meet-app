@@ -33,7 +33,7 @@ function WelcomeScreen(props) {
           </div>
         </div>
         <a
-          href="https://kittekat14.github.io/meet-app/Meet-Privacy-Policy.html"
+          href="https://kittekat14.github.io/meet-app/privacy.html"
           rel="nofollow noopener"
         >Privacy policy</a>
       </Container>

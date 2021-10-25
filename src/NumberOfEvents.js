@@ -13,14 +13,14 @@ class NumberOfEvents extends Component {
 handleInputChanged = (event) => {
   const value = event.target.value;
   this.props.updateEventNumber(value);
-  if (isNaN(value) || value < 0 || value === 0) {
+  if (isNaN(value) || value <= 0) {
     return this.setState({
-      numberOfEvents: '',
+      numberOfEvents: 32,
       errorText: 'Please write a number bigger than 0',
     })
   } else if (value > 32) {
     return this.setState({
-      numberOfEvents: '',
+      numberOfEvents: 32,
       errorText: 'Please select a number from 1 to 32',
     })
   } else {

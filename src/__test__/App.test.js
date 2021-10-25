@@ -30,7 +30,10 @@ describe('<App /> Integration', () => {
 let AppWrapper;
 beforeEach(async () => {
   AppWrapper = await mount(<App />);
+  await AppWrapper.instance().componentDidMount();
+  AppWrapper.update();
 });
+
 afterEach(() => {
   AppWrapper.unmount();
 });
@@ -77,9 +80,10 @@ afterEach(() => {
   test("User can get a specific number of events when they change .numberInput input field", () => {
     AppWrapper.setState({ numberOfEvents: 32 });
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    const eventObject = { target: { value: 20 } };
-    NumberOfEventsWrapper.find(".numberInput").simulate("change", eventObject);
-    expect(AppWrapper.state("numberOfEvents")).toBe(20);
+    NumberOfEventsWrapper.find(".numberInput").simulate("change", {
+      target: { value: 20 },
+    });
+    expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(20);
   });
 
   test("is mockData passed through prop 'events' of EventList?", async () => {

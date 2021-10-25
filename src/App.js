@@ -6,8 +6,6 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from "./api";
 import logo from './images/MEET2.png';
-import WelcomeScreen from './WelcomeScreen';
-import {checkToken, getAccessToken} from './api';
 
 class App extends Component {
   constructor(props) {
@@ -18,24 +16,19 @@ class App extends Component {
       locations: [],
       numberOfEvents: 32,
       currentLocation: "all",
-      showWelcomeScreen: undefined,
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.mounted = true;
-    const accessToken = localStorage.getItem("access_token");
-    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-    const searchParams = new URLSearchParams(window.location.search);
-    const code = searchParams.get("code");
-    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-    if ((code || isTokenValid) && this.mounted) {
-      getEvents().then((events) => {
-        if (this.mounted) {
-          this.setState({ events, locations: extractLocations(events) });
-        }
-      });
-    }
+    getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({
+          events: events.slice(0, this.state.numberOfEvents),
+          locations: extractLocations(events),
+        });
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -59,17 +52,17 @@ class App extends Component {
     });
   };
 
-  updateEventNumber = (changedNumber) => {
-    this.setState({ numberOfEvents: changedNumber });
-    this.updateEvents(this.state.currentLocation, changedNumber);
+  updateEventNumber = async (event) => {
+    const eventCount = event.target.value ? parseInt(event.target.value) : 32;
+    await this.setState({ numberOfEvents: eventCount });
+    this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
   };
 
-  render() {
-    if (this.state.showWelcomeScreen === undefined)
-      return <div className="App" />;
 
+  render() {
     return (
       <div className="App">
+
         <img src={logo} alt="Logo" width="250" />
 
         <CitySearch
@@ -81,11 +74,7 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateEventNumber={(value) => this.updateEventNumber(value)}
         />
-
-        <WelcomeScreen
-          showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => getAccessToken()}
-        />
+        
       </div>
     );
   }

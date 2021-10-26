@@ -9,6 +9,9 @@ import logo from './images/MEET2.png';
 import WelcomeScreen from './WelcomeScreen';
 import {checkToken, getAccessToken} from './api';
 
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { EventGenre } from './EventGenre';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -64,6 +67,19 @@ class App extends Component {
     this.updateEvents(this.state.currentLocation, changedNumber);
   };
 
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter(
+        (event) => event.location === location
+      ).length; //each event with a location property is being counted
+      const city = location.split(", ").shift(); 
+      //takes each location and stops, where , begins ("split"), then takes the first item in array ('shift')
+      return { city, number };
+    });
+    return data; // map function returns new array with filtered and reduced to city (not country) data
+  };
+
   render() {
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
@@ -77,13 +93,40 @@ class App extends Component {
           updateEvents={this.updateEvents}
         />
 
+        <div className="data-vis-wrapper">
+          <EventGenre events={this.state.events} />
+          <ResponsiveContainer height={400} className="scattered-chart">
+            <ScatterChart
+              width={400}
+              height={400}
+              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+            >
+              <CartesianGrid />
+              <XAxis
+                tick={{ fill: "#fff" }}
+                type="category"
+                dataKey="city"
+                name="city"
+              />
+              <YAxis
+                tick={{ fill: "#fff" }}
+                allowDecimals={false}
+                type="number"
+                dataKey="number"
+                name="number of events"
+              />
+              <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+              <Legend verticalAlign="top" height={36} />
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
+
         <EventList events={this.state.events} />
-        
         <NumberOfEvents
           numberOfEvents={this.state.numberOfEvents}
           updateEventNumber={(value) => this.updateEventNumber(value)}
         />
-
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => getAccessToken()}

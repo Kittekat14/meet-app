@@ -111,5 +111,11 @@ afterEach(() => {
     });
     expect(AppWrapper.state('numberOfEvents')).toEqual(24);
   });
+
+  test("The updateEvents function gets called when updateEventNumber is called", async () => {
+    await AppWrapper.instance().updateEventNumber();
+    const upEv = await AppWrapper.instance().updateEvents();
+    expect(upEv).toHaveBeenCalled();
+  });
   
 })

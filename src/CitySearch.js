@@ -46,7 +46,6 @@ class CitySearch extends Component {
 
     return (
       <div className="city-search-wrapper">
-        <h2>Search</h2>
 
         <div className="CitySearch">
           <InfoAlert text={this.state.infoText} />

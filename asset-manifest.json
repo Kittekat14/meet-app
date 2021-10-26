@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/meet-app/static/css/main.8ef5e7df.chunk.css",
-    "main.js": "/meet-app/static/js/main.1c597913.chunk.js",
-    "main.js.map": "/meet-app/static/js/main.1c597913.chunk.js.map",
-    "runtime-main.js": "/meet-app/static/js/runtime-main.6ddb761c.js",
-    "runtime-main.js.map": "/meet-app/static/js/runtime-main.6ddb761c.js.map",
-    "static/js/2.bf47de8d.chunk.js": "/meet-app/static/js/2.bf47de8d.chunk.js",
-    "static/js/2.bf47de8d.chunk.js.map": "/meet-app/static/js/2.bf47de8d.chunk.js.map",
-    "static/js/3.f5a1c29b.chunk.js": "/meet-app/static/js/3.f5a1c29b.chunk.js",
-    "static/js/3.f5a1c29b.chunk.js.map": "/meet-app/static/js/3.f5a1c29b.chunk.js.map",
+    "main.js": "/meet-app/static/js/main.5b7c773c.chunk.js",
+    "main.js.map": "/meet-app/static/js/main.5b7c773c.chunk.js.map",
+    "runtime-main.js": "/meet-app/static/js/runtime-main.ad5b917b.js",
+    "runtime-main.js.map": "/meet-app/static/js/runtime-main.ad5b917b.js.map",
+    "static/js/2.60abe31b.chunk.js": "/meet-app/static/js/2.60abe31b.chunk.js",
+    "static/js/2.60abe31b.chunk.js.map": "/meet-app/static/js/2.60abe31b.chunk.js.map",
+    "static/js/3.5573ff24.chunk.js": "/meet-app/static/js/3.5573ff24.chunk.js",
+    "static/js/3.5573ff24.chunk.js.map": "/meet-app/static/js/3.5573ff24.chunk.js.map",
     "index.html": "/meet-app/index.html",
     "service-worker.js": "/meet-app/service-worker.js",
     "service-worker.js.map": "/meet-app/service-worker.js.map",
     "static/css/main.8ef5e7df.chunk.css.map": "/meet-app/static/css/main.8ef5e7df.chunk.css.map",
-    "static/js/2.bf47de8d.chunk.js.LICENSE.txt": "/meet-app/static/js/2.bf47de8d.chunk.js.LICENSE.txt",
+    "static/js/2.60abe31b.chunk.js.LICENSE.txt": "/meet-app/static/js/2.60abe31b.chunk.js.LICENSE.txt",
     "static/media/MEET2.9b07cb60.png": "/meet-app/static/media/MEET2.9b07cb60.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.6ddb761c.js",
-    "static/js/2.bf47de8d.chunk.js",
+    "static/js/runtime-main.ad5b917b.js",
+    "static/js/2.60abe31b.chunk.js",
     "static/css/main.8ef5e7df.chunk.css",
-    "static/js/main.1c597913.chunk.js"
+    "static/js/main.5b7c773c.chunk.js"
   ]
 }

@@ -10,7 +10,7 @@ import WelcomeScreen from './WelcomeScreen';
 import {checkToken, getAccessToken} from './api';
 
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { EventGenre } from './EventGenre';
+import EventGenre from './EventGenre';
 
 class App extends Component {
   constructor(props) {

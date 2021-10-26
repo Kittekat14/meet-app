@@ -4,7 +4,6 @@ import { InfoAlert } from './Alert';
 class CitySearch extends Component {
   constructor(props) {
     super(props)
-  
     this.state = {
       query: '',
       suggestions: [],
@@ -28,7 +27,6 @@ class CitySearch extends Component {
         return this.setState({
           query: value,
           suggestions,
-          showSuggestions: false,
           infoText:''
         });
     }

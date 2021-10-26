@@ -13,6 +13,7 @@ describe('<App /> component unit test', () => {
   let AppWrapper;
   beforeAll(() => {
     AppWrapper = shallow(<App />); 
+    AppWrapper.setState({ showWelcomeScreen: false });
   });
     test('render EventList component', () => {
     expect(AppWrapper.find(EventList)).toHaveLength(1);
@@ -30,31 +31,37 @@ describe('<App /> Integration', () => {
 let AppWrapper;
 beforeEach(async () => {
   AppWrapper = await mount(<App />);
+  await AppWrapper.instance().componentDidMount();
+  AppWrapper.update();
 });
 afterEach(() => {
   AppWrapper.unmount();
 });
 
   test('App passes "events" state as a prop to EventList', () => {
-  const AppEventsState = AppWrapper.state('events');
-  expect(AppEventsState).not.toEqual(undefined);
-  expect(AppWrapper.find(EventList).props().events).toEqual(AppEventsState);
+    AppWrapper.setState({ showWelcomeScreen: false });
+    const AppEventsState = AppWrapper.state('events');
+    expect(AppEventsState).not.toEqual(undefined);
+    expect(AppWrapper.find(EventList).props().events).toEqual(AppEventsState);
   });
 
   test('App passes "locations" state as a prop to CitySearch', () => {
-  const AppLocationsState = AppWrapper.state('locations');
-  expect(AppLocationsState).not.toEqual(undefined);
-  expect(AppWrapper.find(CitySearch).props().locations).toEqual(AppLocationsState);
+    AppWrapper.setState({ showWelcomeScreen: false });
+    const AppLocationsState = AppWrapper.state('locations');
+    expect(AppLocationsState).not.toEqual(undefined);
+    expect(AppWrapper.find(CitySearch).props().locations).toEqual(AppLocationsState);
   });
 
   test('App passes "numberOfEvents" state as a prop to NumberOfEvents', () => {
-  const AppEventNumberState = AppWrapper.state('numberOfEvents');
-  expect(AppEventNumberState).not.toEqual(undefined);
-  expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(AppEventNumberState);
+    AppWrapper.setState({ showWelcomeScreen: false });
+    const AppEventNumberState = AppWrapper.state('numberOfEvents');
+    expect(AppEventNumberState).not.toEqual(undefined);
+    expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(AppEventNumberState);
   });
 
   
   test("User get list of events matching the city they selected", async () => {
+    AppWrapper.setState({ showWelcomeScreen: false });
     const CitySearchWrapper = AppWrapper.find(CitySearch);
     const locations = extractLocations(mockData);
     CitySearchWrapper.setState({ suggestions: locations });
@@ -68,6 +75,7 @@ afterEach(() => {
   });
 
   test('User get list of all events when they click "See all cities"', async () => {
+    AppWrapper.setState({ showWelcomeScreen: false });
     const suggestionItems = AppWrapper.find(CitySearch).find(".suggestions li");
     await suggestionItems.at(suggestionItems.length - 1).simulate("click");
     const allEvents = await getEvents();
@@ -75,7 +83,7 @@ afterEach(() => {
   });
 
   test("User can get a specific number of events when they change .numberInput input field", () => {
-    AppWrapper.setState({ numberOfEvents: 32 });
+    AppWrapper.setState({ numberOfEvents: 32, showWelcomeScreen: false });
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     const eventObject = { target: { value: 20 } };
     NumberOfEventsWrapper.find(".numberInput").simulate("change", eventObject);
@@ -83,6 +91,7 @@ afterEach(() => {
   });
 
   test("is mockData passed through prop 'events' of EventList?", async () => {
+    AppWrapper.setState({ showWelcomeScreen: false });
     const allEvents = await getEvents();
     AppWrapper.setState({
       events: allEvents,
@@ -92,6 +101,7 @@ afterEach(() => {
   });
 
   test("EventList renders exactly as much events as set in state", () => {
+    AppWrapper.setState({ showWelcomeScreen: false });
     AppWrapper.setState({
       numberOfEvents: 24,
     });
@@ -102,9 +112,7 @@ afterEach(() => {
   })
 
   test("App displays 32 events by default", () => {
-    AppWrapper.setState({
-      numberOfEvents: 24,
-    });
+    AppWrapper.setState({ numberOfEvents: 24, showWelcomeScreen: false });
     expect(AppWrapper.state('numberOfEvents')).toEqual(24);
   });
   

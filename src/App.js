@@ -9,7 +9,7 @@ import logo from './images/MEET2.png';
 import WelcomeScreen from './WelcomeScreen';
 import {checkToken, getAccessToken} from './api';
 
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { EventGenre } from './EventGenre';
 
 class App extends Component {
@@ -97,27 +97,20 @@ class App extends Component {
           <EventGenre events={this.state.events} />
           <ResponsiveContainer height={400} className="scattered-chart">
             <ScatterChart
-              width={400}
-              height={400}
-              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+              margin={{
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 20,
+              }}
             >
               <CartesianGrid />
-              <XAxis
-                tick={{ fill: "#fff" }}
-                type="category"
-                dataKey="city"
-                name="city"
-              />
-              <YAxis
-                tick={{ fill: "#fff" }}
-                allowDecimals={false}
-                type="number"
-                dataKey="number"
-                name="number of events"
-              />
+              <XAxis type="category" dataKey="city" name="city" />
+              <YAxis type="number" dataKey="number" name="number of events" />
               <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-              <Legend verticalAlign="top" height={36} />
+
               <Scatter data={this.getData()} fill="#8884d8" />
+              
             </ScatterChart>
           </ResponsiveContainer>
         </div>
@@ -127,10 +120,10 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateEventNumber={(value) => this.updateEventNumber(value)}
         />
-        <WelcomeScreen
+        {/* <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => getAccessToken()}
-        />
+        /> */}
       </div>
     );
   }

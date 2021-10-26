@@ -4,10 +4,8 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from 'rechart';
 
 const EventGenre = ({ events }) => {
   const [data, setData] = useState([]);
-
   const genres = ["React", "JavaScript", "Node", "jQuery", "Angular JS"];
-  const COLORS = ["#f8b195", "#f67280", "#c06c87", "#6c5b7b", "#355c7d"];
-
+  const COLORS = ["#624738", "#213132", "#34dc42", "#3ad464", "#9470d4"];
 
   const getData = () => {
     let data = genres.map((genre) => {
@@ -27,23 +25,23 @@ const EventGenre = ({ events }) => {
 
 
   return (
-    <ResponsiveContainer height={400} className="pie-chart">
-      <PieChart width={400} heigth={400}>
+    <ResponsiveContainer height={400}>
+      <PieChart width={400} height={400} className="pie-chart">
         <Pie
           data={data}
-          cx={200}
-          cy={200}
+          cx={"50%"}
+          cy={"50%"}
           labelLine={false}
-          outerRadius={80}
-          fill='#8884d8'
-          dataKey="value"
+          innerRadius={80}
           label={({ name, percent }) =>
             `${name} ${(percent * 100).toFixed(0)} %`
           }
+          outerRadius={80}
+          dataKey="value"
         >
           {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
         </Pie>
       </PieChart>
     </ResponsiveContainer>
@@ -51,4 +49,5 @@ const EventGenre = ({ events }) => {
 }
 
 export default EventGenre;
+
 

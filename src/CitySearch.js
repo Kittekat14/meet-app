@@ -17,7 +17,7 @@ class CitySearch extends Component {
     const value = event.target.value;
     this.setState({ showSuggestions: true });
     const suggestions = this.props.locations.filter((location) => {
-      return location.toUpperCase().indexOf(value.toUpperCase()) > -1; //this finds all the letters in a location (every letter the user types is counted)
+      return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
     if (suggestions.length === 0) {
       this.setState({
@@ -25,13 +25,12 @@ class CitySearch extends Component {
         infoText: 'We can not find the city you are looking for. Please try another city'
       });
     } else {
-      return this.setState({
-        query: value,
-        infoText: "",
-        
-        suggestions,
-        showSuggestions: false,
-      });  
+        return this.setState({
+          query: value,
+          suggestions,
+          showSuggestions: false,
+          infoText:''
+        });
     }
   };
 
@@ -54,7 +53,7 @@ class CitySearch extends Component {
         placeholder="Find Events in your City"
         className="city"
         value={this.state.query}
-        onChange={(event) => this.handleInputChanged(event)}
+        onChange={this.handleInputChanged}
         onFocus={() => { this.setState({ showSuggestions: true }) }}
         />
         <ul className="suggestions" style={this.state.showSuggestions ? {} : { display: 'none' } }>

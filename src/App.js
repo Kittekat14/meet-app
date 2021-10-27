@@ -52,17 +52,14 @@ class App extends Component {
     });
   };
 
-  updateEventNumber = async (event) => {
-    const eventCount = event.target.value ? parseInt(event.target.value) : 32;
-    await this.setState({ numberOfEvents: eventCount });
-    this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
+  updateEventNumber = (changedNumber) => {
+    this.setState({ numberOfEvents: changedNumber });
+    this.updateEvents(this.state.currentLocation, changedNumber);
   };
-
 
   render() {
     return (
       <div className="App">
-
         <img src={logo} alt="Logo" width="250" />
 
         <CitySearch
@@ -74,7 +71,6 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateEventNumber={(value) => this.updateEventNumber(value)}
         />
-        
       </div>
     );
   }

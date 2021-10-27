@@ -40,7 +40,7 @@ handleInputChanged = (event) => {
         id="numberOfEventsInput"
         type="number" 
         className="numberInput" 
-        value={this.props.numberOfEvents}
+        value={this.state.numberOfEvents}
         onChange={(event) => this.handleInputChanged(event)} />
       </label>
 

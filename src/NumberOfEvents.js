@@ -11,6 +11,8 @@ class NumberOfEvents extends Component {
 
 handleInputChanged = (event) => {
   const value = event.target.value;
+  this.props.updateEventNumber(value);
+
   if (isNaN(value) || value <= 0) {
     return this.setState({
       numberOfEvents: 32,
@@ -27,7 +29,6 @@ handleInputChanged = (event) => {
       errorText: '',
     });
   };
-  this.props.updateEventNumber(value);
 }
 
   render() {

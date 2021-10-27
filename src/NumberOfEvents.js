@@ -5,14 +5,12 @@ class NumberOfEvents extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfEvents: '',
       errorText: ''
     }
   }
 
 handleInputChanged = (event) => {
   const value = event.target.value;
-  this.props.updateEventNumber(value);
   if (isNaN(value) || value <= 0) {
     return this.setState({
       numberOfEvents: 32,
@@ -29,6 +27,7 @@ handleInputChanged = (event) => {
       errorText: '',
     });
   };
+  this.props.updateEventNumber(value);
 }
 
   render() {
@@ -40,7 +39,7 @@ handleInputChanged = (event) => {
         id="numberOfEventsInput"
         type="number" 
         className="numberInput" 
-        value={this.state.numberOfEvents}
+        value={this.props.numberOfEvents}
         onChange={(event) => this.handleInputChanged(event)} />
       </label>
 

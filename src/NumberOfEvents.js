@@ -5,7 +5,7 @@ class NumberOfEvents extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfEvents: 32,
+      numberOfEvents: '',
       errorText: ''
     }
   }

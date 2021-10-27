@@ -38,11 +38,11 @@ export class InfoAlert extends Alert {
       super(props);
     this.color = 'blue';
     this.backgroundColor = '#cdcdcd';
-    this.fontSize = '18px';
+    this.fontSize = '14px';
     this.fontWeight = '500';
     this.maxWidth = '600px';
     this.margin = '0 auto';
-
+    this.fontStyle = 'italic';
   }
 }
 
@@ -54,5 +54,15 @@ export class ErrorAlert extends Alert {
     this.fontSize = '16px';
     this.fontWeight = '700';
     this.margin = "0 auto";
+  }
+}
+
+export class WarningAlert extends Alert {
+  constructor(props) {
+    super(props);
+    this.color = "#f3f72f";
+    this.backgroundColor = "#000";
+    this.fontSize = "16px";
+    this.fontWeight = "700";
   }
 }

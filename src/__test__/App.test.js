@@ -90,24 +90,35 @@ describe("<App /> Integration", () => {
     expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(20);
   });
 
-  // test("is mockData passed through prop 'events' of EventList?", async () => {
-  //   const allEvents = await getEvents();
-  //   AppWrapper.setState({
-  //     events: allEvents,
-  //   });
-  //   const EventListWrapper = AppWrapper.find(EventList);
-  //   expect(EventListWrapper.prop("events").length).toEqual(mockData.length);
-  // });
+  test("is mockData passed through prop 'events' of EventList?", async () => {
+    const allEvents = await getEvents();
+    AppWrapper.setState({
+      events: allEvents,
+    });
+    const EventListWrapper = AppWrapper.find(EventList);
+    expect(EventListWrapper.prop("events").length).toEqual(mockData.length);
+  });
 
-  // test("EventList renders exactly as much events as set in state", () => {
-  //   AppWrapper.setState({
-  //     numberOfEvents: 24,
-  //   });
-  //   const EventListWrapper = AppWrapper.find(EventList);
-  //   EventListWrapper.update();
-  //   const eventList = EventListWrapper.prop("events");
-  //   expect(eventList.length).toEqual(AppWrapper.state("events").length);
-  // });
+  test("EventList renders exactly as much events as set in state", () => {
+    AppWrapper.setState({
+      numberOfEvents: 24,
+    });
+    const EventListWrapper = AppWrapper.find(EventList);
+    EventListWrapper.update();
+    const eventList = EventListWrapper.prop("events");
+    expect(eventList.length).toEqual(AppWrapper.state("events").length);
+  });
 
-  
+  test("App displays 32 events by default", () => {
+    AppWrapper.setState({
+      numberOfEvents: 24,
+    });
+    expect(AppWrapper.state("numberOfEvents")).toEqual(24);
+  });
+
+  // test("The updateEvents function gets called when updateEventNumber is called", async () => {
+  //   await AppWrapper.instance().updateEventNumber();
+  //   const upEv = await AppWrapper.instance().updateEvents();
+  //   expect(upEv).toHaveBeenCalled();
+  // });
 });

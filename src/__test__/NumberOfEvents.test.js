@@ -25,7 +25,22 @@ describe("<NumberOfEvents /> component unit test", () => {
      expect(NumberOfEventsWrapper.find(".errorAlert").prop("text")).toEqual(errorText);
    });
 
-   
+   test('negative number in numberInput changes errorText', () => {
+     NumberOfEventsWrapper.setState({
+        numberOfEvents: 32
+      });
+      const eventObject = { target: { value: -4 }};
+      NumberOfEventsWrapper.find('.numberInput').simulate('change', eventObject); 
+      expect(NumberOfEventsWrapper.state('errorText')).toBe('Please write a number bigger than 0');
+   })
+   test('number over 32 in numberInput changes errorText', () => {
+     NumberOfEventsWrapper.setState({
+        numberOfEvents: 32
+      });
+      const eventObject = { target: { value: 88 }};
+      NumberOfEventsWrapper.find('.numberInput').simulate('change', eventObject); 
+      expect(NumberOfEventsWrapper.state("errorText")).toBe("Please select a number from 1 to 32");
+   })
 
 })
 

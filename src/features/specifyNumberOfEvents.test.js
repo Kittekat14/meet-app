@@ -38,7 +38,7 @@ defineFeature(feature, test => {
         then('there will be as many events shown as the user has specified', () => {
           const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
           AppWrapper.setState({ numberOfEvents: 23 });
-          expect(NumberOfEventsWrapper.prop('eventCounter')).toBe(23);
+          expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(23);
         });
   });
 

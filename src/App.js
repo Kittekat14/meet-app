@@ -7,7 +7,7 @@ import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from "./api";
 import logo from './images/MEET2.png';
 import WelcomeScreen from './WelcomeScreen';
-import {checkToken, getAccessToken} from './api';
+import { checkToken, getAccessToken } from './api';
 
 class App extends Component {
   constructor(props) {
@@ -23,15 +23,15 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    this.mounted = true;
+    this.isMounted = true;
     const accessToken = localStorage.getItem("access_token");
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-    if ((code || isTokenValid) && this.mounted) {
+    if ((code || isTokenValid) && this.isMounted) {
       getEvents().then((events) => {
-        if (this.mounted) {
+        if (this.isMounted) {
           this.setState({ events, locations: extractLocations(events) });
         }
       });
@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    this.mounted = false;
+    this.isMounted = false;
   }
 
   updateEvents = (location, numberOfEvents) => {
@@ -50,7 +50,7 @@ class App extends Component {
           : events.filter((event) => event.location === location);
 
       const eventsToShow = locationEvents.slice(0, numberOfEvents);
-      if (this.mounted) {
+      if (this.isMounted) {
         this.setState({
           events: eventsToShow,
           currentLocation: location,

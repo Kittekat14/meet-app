@@ -53,7 +53,7 @@ class CitySearch extends Component {
             placeholder="Find Events in your City"
             className="city"
             value={this.state.query}
-            onChange={this.handleInputChanged}
+            onChange={(event) => this.handleInputChanged(event)}
             onFocus={() => {
               this.setState({ showSuggestions: true });
             }}

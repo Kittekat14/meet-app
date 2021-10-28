@@ -3,15 +3,15 @@ import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      query: "",
+      query: '',
       suggestions: [],
       showSuggestions: undefined,
-      infoText: "",
-    };
+      infoText: ''
+    }
   }
-
+  
   handleInputChanged = (event) => {
     const value = event.target.value;
     this.setState({ showSuggestions: true });
@@ -21,16 +21,15 @@ class CitySearch extends Component {
     if (suggestions.length === 0) {
       this.setState({
         query: value,
-        infoText:
-          "We can not find the city you are looking for. Please try another city",
+        infoText: 'We can not find the city you are looking for. Please try another city'
       });
     } else {
-      return this.setState({
-        query: value,
-        suggestions,
-        showSuggestions: false,
-        infoText: "",
-      });
+        return this.setState({
+          query: value,
+          suggestions,
+          showSuggestions: false,
+          infoText:''
+        });
     }
   };
 
@@ -45,10 +44,13 @@ class CitySearch extends Component {
   };
 
   render() {
+
     return (
-      <>
-        <InfoAlert className="infoAlert" text={this.state.infoText} />
+      <div className="city-search-wrapper">
+
         <div className="CitySearch">
+         
+          <InfoAlert text={this.state.infoText} />
           <input
             type="text"
             placeholder="Find Events in your City"
@@ -76,7 +78,7 @@ class CitySearch extends Component {
             </li>
           </ul>
         </div>
-      </>
+      </div>
     );
   }
 }

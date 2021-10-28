@@ -7,7 +7,7 @@ import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from "./api";
 import logo from './images/MEET2.png';
 import WelcomeScreen from './WelcomeScreen';
-import {checkToken, getAccessToken} from './api';
+import { checkToken, getAccessToken } from './api';
 
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import EventGenre from './EventGenre';
@@ -64,7 +64,7 @@ class App extends Component {
 
   updateEventNumber = (changedNumber) => {
     this.setState({ numberOfEvents: changedNumber });
-    this.updateEvents(this.state.currentLocation, changedNumber);
+    this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
   };
 
   getData = () => {

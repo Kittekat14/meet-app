@@ -29,7 +29,7 @@ describe('<CitySearch /> component', () => {
         query: 'Munich'
       });
       const eventObject = { target: { value: 'Berlin' }};
-      CitySearchWrapper.find('.city').simulate('change', eventObject); //simulate a change from Munich to Berlin
+      CitySearchWrapper.find('.city').simulate('change', eventObject); 
       expect(CitySearchWrapper.state('query')).toBe('Berlin');
     });
 
@@ -78,5 +78,14 @@ describe('<CitySearch /> component', () => {
       expect(CitySearchWrapper.state('showSuggestions')).toBe(false);
       expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({ display: 'none' });
     });
-    
+    test("state of infoText changes when user types an unknown city in .city input", () => {
+      CitySearchWrapper.setState({
+        query: 'Berlin',
+      });
+      const eventObject = { target: { value: 'Munich' } };
+      CitySearchWrapper.find(".city").simulate("change", eventObject);
+      expect(CitySearchWrapper.state("infoText")).toBe(
+        "We can not find the city you are looking for. Please try another city"
+      );
+    });
 });

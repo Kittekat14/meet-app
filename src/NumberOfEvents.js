@@ -36,7 +36,7 @@ handleInputChanged = (event) => {
       <label htmlFor="numberOfEventsInput"> Number of Events on Page:
       <input 
         id="numberOfEventsInput"
-        type="number" 
+        type="text"
         className="numberInput" 
         value={this.props.numberOfEvents}
         onChange={(event) => this.handleInputChanged(event)} />

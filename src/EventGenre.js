@@ -17,11 +17,7 @@ const EventGenre = ({ events }) => {
       const value = events.filter((event) =>
         event.summary.split(" ").includes(genre)
       ).length;
-<<<<<<< Updated upstream
-      return { name: genre, value: value };
-=======
       return { name: genre, value: value }; //that's the object that's created for every piece of pie
->>>>>>> Stashed changes
     });
     data = data.filter((data) => data.value);
     return data;

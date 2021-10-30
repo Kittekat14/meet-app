@@ -15,10 +15,12 @@ handleInputChanged = (event) => {
 
   if (isNaN(value) || value <= 0) {
     return this.setState({
+      numberOfEvents: 32,
       errorText: "Please write a number bigger than 0",
     });
   } else if (value > 32) {
     return this.setState({
+      numberOfEvents: 32,
       errorText: "Please select a number from 1 to 32",
     });
   } else {
@@ -36,10 +38,10 @@ handleInputChanged = (event) => {
       <label htmlFor="numberOfEventsInput"> Number of Events on Page:
       <input 
         id="numberOfEventsInput"
-        type="text"
+        type="text" 
         className="numberInput" 
         value={this.props.numberOfEvents}
-        onChange={(event) => this.handleInputChanged(event)} />
+        onChange={this.handleInputChanged} />
       </label>
 
       <ErrorAlert className="errorAlert" text={this.state.errorText} />

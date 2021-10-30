@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       events: [],
       locations: [],
-      numberOfEvents: 32,
+      numberOfEvents: undefined,
       currentLocation: "all",
       showWelcomeScreen: undefined,
     };
@@ -32,7 +32,7 @@ class App extends Component {
     const code = searchParams.get("code");
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
     if (code || isTokenValid) {
-      getEvents().then((events) => {
+      getEvents().then((events) => { 
         this.setState({ events, locations: extractLocations(events) });
       });
     }
@@ -46,17 +46,16 @@ class App extends Component {
           : events.filter((event) => event.location === location);
 
       const eventsToShow = locationEvents.slice(0, numberOfEvents);
-      this.setState({
+        this.setState({
           events: eventsToShow,
           currentLocation: location,
-      });
-    
+        });
     });
   };
 
   updateEventNumber = (changedNumber) => {
     this.setState({ numberOfEvents: changedNumber });
-    this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
+    this.updateEvents(this.state.currentLocation, changedNumber);
   };
 
   getData = () => {

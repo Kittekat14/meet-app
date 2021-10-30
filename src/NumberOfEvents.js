@@ -39,7 +39,7 @@ handleInputChanged = (event) => {
         type="text" 
         className="numberInput" 
         value={this.props.numberOfEvents}
-        onChange={(event) => this.handleInputChanged(event)} />
+        onChange={this.handleInputChanged} />
       </label>
 
       <ErrorAlert className="errorAlert" text={this.state.errorText} />

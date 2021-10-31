@@ -4,6 +4,7 @@ development (TDD) technique. The application uses the Google Calendar API to fet
 upcoming events. Also, I will add some graphs to the app and use visualization techniques, that will output two charts -one that show how many events will take place in one city and another that visualizes the popularity of event genres in the form of a pie chart.
 
 ![Screenshot-Final-version-of-App](src/images/Final-Screenshot.PNG)
+[Video Demo Meet-App (Older Version)](https://youtu.be/SzCM5vJKqQ8)
 
 # Key Features 
 1. Filter events by city. 

@@ -11,7 +11,7 @@ const EventGenre = ({ events }) => {
   //   { name: 'Group D', value: 200 },
   // ];
   const genres = ["React", "JavaScript", "Node", "jQuery", "AngularJS"];
-  const colors = ["#736477", "#736477", "#4b049c", "#9c0494", "#9c174a"];
+  const COLORS = ["#736477", "#736477", "#4b049c", "#9c0494", "#9c174a"];
 
   const getData = () => {
     let data = genres.map((genre) => {
@@ -44,14 +44,14 @@ const EventGenre = ({ events }) => {
           cy={200}
           labelLine={false}
           outerRadius={80}
-          
+          fill="#aa1c92"
           dataKey="value"
           label={({ name, percent }) =>
             `${name} ${(percent * 100).toFixed(0)}%`
           }
         >
-          {data.map((index) => (
-            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
       </PieChart>

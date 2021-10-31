@@ -3,6 +3,8 @@ The goal is to build a serverless, progressive web application (PWA) with React 
 development (TDD) technique. The application uses the Google Calendar API to fetch 
 upcoming events. Also, I will add some graphs to the app and use visualization techniques, that will output two charts -one that show how many events will take place in one city and another that visualizes the popularity of event genres in the form of a pie chart.
 
+![Screenshot-Final-version-of-App](src\images\Final-Screenshot.PNG)
+
 # Key Features 
 1. Filter events by city. 
 2. Show/hide event details. 

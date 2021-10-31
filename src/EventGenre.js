@@ -11,7 +11,7 @@ const EventGenre = ({ events }) => {
   //   { name: 'Group D', value: 200 },
   // ];
   const genres = ["React", "JavaScript", "Node", "jQuery", "AngularJS"];
-  const COLORS = ["#4285f4", "#f4c542", "#4b049c", "#9c0494", "#9c174a"];
+  const COLORS = ["#d0033f", "#e80f89", "#4b049c", "#9c0494", "#9c174a"];
 
   const getData = () => {
     let data = genres.map((genre) => {

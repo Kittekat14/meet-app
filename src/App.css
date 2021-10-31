@@ -165,6 +165,7 @@ input[type="number"] {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-evenly;
   background-color: #d8bfd8;
   margin: 10px;
   border-radius: 6px;

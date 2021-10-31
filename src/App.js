@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       events: [],
       locations: [],
-      numberOfEvents: 32,
+      numberOfEvents: undefined,
       currentLocation: "all",
       showWelcomeScreen: undefined,
     };

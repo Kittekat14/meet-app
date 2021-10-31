@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/meet-app/static/css/main.40e804b6.chunk.css",
+    "main.css": "/meet-app/static/css/main.8411512d.chunk.css",
     "main.js": "/meet-app/static/js/main.723d29c8.chunk.js",
     "main.js.map": "/meet-app/static/js/main.723d29c8.chunk.js.map",
     "runtime-main.js": "/meet-app/static/js/runtime-main.a501bfb6.js",
@@ -12,7 +12,7 @@
     "index.html": "/meet-app/index.html",
     "service-worker.js": "/meet-app/service-worker.js",
     "service-worker.js.map": "/meet-app/service-worker.js.map",
-    "static/css/main.40e804b6.chunk.css.map": "/meet-app/static/css/main.40e804b6.chunk.css.map",
+    "static/css/main.8411512d.chunk.css.map": "/meet-app/static/css/main.8411512d.chunk.css.map",
     "static/js/2.7f4dae50.chunk.js.LICENSE.txt": "/meet-app/static/js/2.7f4dae50.chunk.js.LICENSE.txt",
     "static/media/MEET2.9b07cb60.png": "/meet-app/static/media/MEET2.9b07cb60.png",
     "static/media/App.css": "/meet-app/static/media/pexels-wendy-wei-1190298.4929fb4a.jpg"
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.a501bfb6.js",
     "static/js/2.7f4dae50.chunk.js",
-    "static/css/main.40e804b6.chunk.css",
+    "static/css/main.8411512d.chunk.css",
     "static/js/main.723d29c8.chunk.js"
   ]
 }

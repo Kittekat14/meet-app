@@ -6,6 +6,9 @@ upcoming events. Also, I will add some graphs to the app and use visualization t
 ![Screenshot-Final-version-of-App](src/images/Final-Screenshot.PNG)
 <a href="https://youtu.be/SzCM5vJKqQ8" target="_blank" rel="noopener">Video Demo (Older Version)</a>
 
+Logo: created with [Canva](https://www.canva.com/)
+Background-Image: created by Wendy Wei [Pexels](https://www.pexels.com/de-de/)
+
 # Key Features 
 1. Filter events by city. 
 2. Show/hide event details. 

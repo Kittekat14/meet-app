@@ -7,6 +7,10 @@ The goal was to build a serverless, progressive web application (PWA) with React
 * Logo: created with [Canva](https://www.canva.com/)
 * Background-Image: created by Wendy Wei [Pexels](https://www.pexels.com/de-de/)
 
+## Contact me on LinkedIn or check out my other projects:
+* [My LinkedIn Profile](https://www.linkedin.com/in/katrin-hofstetter-25b945181/)
+* [My Portfolio Website](https://Kittekat14.github.io/portfolio-website)
+
 # Key Features 
 1. Filter events by city. 
 2. Show/hide event details. 
